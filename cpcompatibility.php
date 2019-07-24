@@ -11,17 +11,24 @@
 */
 if (!defined('ABSPATH')) die('uh');
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // Fixing plugins
 $fixed_plugins = array();
 array_push( $fixed_plugins, 'seo-by-rank-math' );
 
 // Fix rankmath
-if ( is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
-	if ( ! wp_script_is( 'lodash', 'registered' ) ) {
-		wp_register_script( 'lodash', plugins_url( 'js/lodash.min.js', __FILE__ ));
-		$fixed_plugins[] = 'seo-by-rank-math';
+add_action( 'admin_init', 'cpcompatibility_fix_rankmath' );
+function cpcompatibility_fix_rankmath(){
+	if ( is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
+		if ( ! wp_script_is( 'lodash', 'registered' ) ) {
+			wp_register_script( 'lodash', plugins_url( 'js/lodash.min.js', __FILE__ ));
+			$fixed_plugins[] = 'seo-by-rank-math';
+		}
 	}
-};
+}
 
 // Fix wp-cli behaviour on "core check-update"
 if ( function_exists( 'classicpress_version' ) && defined( 'WP_CLI' ) && WP_CLI ) {
