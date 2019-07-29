@@ -1,22 +1,19 @@
 <?php
 /*
 * Plugin Name: CPcompatibility
-* Plugin URI: https://www.gieffeedizioni.it/
+* Plugin URI: https://www.gieffeedizioni.it/classicpress
 * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
-* Version: 0.1
+* Version: 0.0.5
 * License: GPL2
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Author: Gieffe edizioni srl
-* Author URI: https://www.gieffeedizioni.it
+* Author URI: https://www.gieffeedizioni.it/classicpress
 */
 if (!defined('ABSPATH')) die('uh');
 
-//ini_set('display_errors', 1);
-//ini_set('display_startup_errors', 1);
-//error_reporting(E_ALL);
-
 // Fixing plugins
 $fixed_plugins = array();
+// Slug of fixed plugins for the plugin page
 array_push( $fixed_plugins, 'seo-by-rank-math' );
 
 // Fix rankmath
@@ -69,7 +66,6 @@ function CPplugin_info( $plugin_name ){
 // if there is an update that don't support WP4
 // or if this plugin fixed it
 add_filter( 'plugin_row_meta', 'cp_plugin_row_meta', 10, 2 );
-
 function cp_plugin_row_meta( $links, $file ) {
 	global $fixed_plugins;
 	$slug = dirname( $file );
@@ -85,10 +81,9 @@ function cp_plugin_row_meta( $links, $file ) {
 
 // This code adds a menu in the admin interface to list 
 // plugins that have an update that don't support WP4
-
-add_action('admin_menu', 'CPplugincheck_create_menu');
-function CPplugincheck_create_menu() {
-	add_menu_page('CP plugin compatibility', 'CP plugin compatibility', 'administrator', __FILE__, 'CPplugincheck_page' ,'dashicons-thumbs-up' );
+add_action('admin_menu', 'CPplugincheck_create_submenu');
+function CPplugincheck_create_submenu() {
+	add_submenu_page('tools.php', 'CP plugin compatibility', 'CP plugin compatibility', 'manage_options', 'cpcompatibility', 'CPplugincheck_page' );
 }
 
 function CPplugincheck_page() {
@@ -112,14 +107,17 @@ function CPplugincheck_page() {
 		echo "(none)";
 	}
 	$listlimit=200;
+	$browse="popular";
+	//	'popular','featured','news' are the alternatives
+
 ?>
 
-<H3>List of <?php echo $listlimit; ?> Popular plugins and required versions</H3>
+<H3>List of <?php echo $listlimit; ?> top <?php echo $browse; ?> plugins and required versions</H3>
 <?php
 	include ( ABSPATH . "wp-admin/includes/plugin-install.php" );
 	$call_api = plugins_api( 'query_plugins',
 		array(
-			'browse' => 'popular',
+			'browse' => $browse,
 			'page' => '1',
 			'per_page' => $listlimit,
 			'fields' => array(

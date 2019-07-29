@@ -3,7 +3,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 
 ## Functions
 ### Fix compatibility with plugins
-* SEO by Rank Math
+* SEO by Rank Math (v. 1.0.30.2)
 ### Fix wp-cli 
 * Fix wp core check-update
 ### Notices on plugin page
@@ -11,4 +11,6 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add a menu that displays top 200 plugins from wp.org and their compatibility
 
 ## Changelog
-* 2019/07/24 v. 0.1
+* 2019/07/29 v. 0.0.5
+   * Fixed SEO by Rank Math (v. 1.0.30.2)
+   * moved to "Tools" menu
