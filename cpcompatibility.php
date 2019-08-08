@@ -14,16 +14,23 @@ if (!defined('ABSPATH')) die('uh');
 // Fixing plugins
 $fixed_plugins = array();
 // Slug of fixed plugins for the plugin page
-array_push( $fixed_plugins, 'seo-by-rank-math' );
+
 
 // Fix rankmath
 add_action( 'admin_init', 'cpcompatibility_fix_rankmath' );
 function cpcompatibility_fix_rankmath(){
+	global $fixed_plugins;
 	if ( is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
-		if ( ! wp_script_is( 'lodash', 'registered' ) ) {
-			wp_register_script( 'lodash', plugins_url( 'js/lodash.min.js', __FILE__ ));
-			$fixed_plugins[] = 'seo-by-rank-math';
+		// lodash missing. Fixed in 1.0.31
+		$rankmathinfo = get_plugin_data( ABSPATH . 'wp-content/plugins/seo-by-rank-math/rank-math.php');
+		$rankmathversion = $rankmathinfo['Version'];
+		if ( version_compare( $rankmathversion, '1.0.31', '<' ) ){
+			if ( ! wp_script_is( 'lodash', 'registered' ) ) {
+				array_push( $fixed_plugins, 'seo-by-rank-math' );
+				wp_register_script( 'lodash', plugins_url( 'js/lodash.min.js', __FILE__ ));
+			}
 		}
+
 	}
 }
 
