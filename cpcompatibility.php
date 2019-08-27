@@ -3,7 +3,7 @@
 * Plugin Name: CPcompatibility
 * Plugin URI: https://www.gieffeedizioni.it/classicpress
 * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
-* Version: 0.0.6
+* Version: 0.0.7
 * License: GPL2
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Author: Gieffe edizioni srl
@@ -40,14 +40,28 @@ if ( function_exists( 'classicpress_version' ) && defined( 'WP_CLI' ) && WP_CLI 
 	WP_CLI::add_hook( 'before_invoke:core check-update', 'cp_correct_check_update' );
 }
 
-function cp_correct_check_update() {
+function cp_correct_check_update( ) {
 	// if we have ClassicPress
 	if ( function_exists( 'classicpress_version' ) ) {
 		$gcu =  get_core_updates();
-		if ( 'latest' == $gcu[0]->{'response'} ){
-			WP_CLI::success( "ClassicPress is up-to-date." );
+		if ( 'latest' == $gcu[0]->{'response'} ){ 
+			WP_CLI::success( "ClassicPress is at the latest version." );
 		} else {
-			WP_CLI::warning( "ClassicPress needs you: response=" . $gcu[0]->{'response'} . "." );
+			//WP_CLI::success( print_r( $gcu, true ) );
+			//WP_CLI::warning( "ClassicPress needs you: response=" . $gcu[0]->{'response'} . ", latest=" . $gcu[0]->{'version'} . "." );
+			if ( $gcu ) {
+				// $cp_version is only needed to evalutate "update_type"
+				// Is the right way to find the path?
+				include( get_home_path() . "/wp-includes/version.php" );
+				$cp_table_output[0]["version"] = $gcu[0]->{'version'};
+				$cp_table_output[0]["package_url"] = $gcu[0]->{'download'};
+				// Don't break anything if %cp_version is null
+				$cp_table_output[0]["update_type"] = ( isset ( $cp_version ) ? WP_CLI\Utils\get_named_sem_ver( $gcu[0]->{'version'}, $cp_version ) : "" );
+				WP_CLI\Utils\format_items( 'table', $cp_table_output, array( 'version', 'update_type', 'package_url' ) );
+				global $assoc_args;
+				print_r($_);
+				WP_CLI::success( $cp_version );
+			}
 		};
 		// then exit to prevent the core check-update command to 
 		// continue his work
