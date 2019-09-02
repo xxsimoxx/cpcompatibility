@@ -13,9 +13,10 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
 ## Changelog
+* 2019/09/02 v. 0.0.8
+   * bugfix
 * 2019/08/29 v. 0.0.7
    * wp core check-update response is closer at the original behaviour
-   * added
 * 2019/07/29 v. 0.0.6
    * Fixed SEO by Rank Math (v. 1.0.30.2)
    * moved to "Tools" menu
