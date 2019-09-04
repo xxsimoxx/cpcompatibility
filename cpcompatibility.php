@@ -9,6 +9,7 @@
 * Author: Gieffe edizioni srl
 * Author URI: https://www.gieffeedizioni.it/classicpress
 */
+
 if (!defined('ABSPATH')) die('uh');
 
 /**
