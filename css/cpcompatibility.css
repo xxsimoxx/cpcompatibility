@@ -1,0 +1,18 @@
+.cpc th, td {
+	padding: 0px 15px 0px 15px;
+}
+.cpc tr:nth-child(even){
+	background-color:white;
+}
+.cpc th{
+	background-color:#0073AA;
+	color: white;
+}
+.cpc-evidence {
+	background-color: orange !important;
+}
+.cpc-number{
+	text-align: right;;
+	font-family: "Courier New", Courier, mono;
+	font-weight: bold;
+}

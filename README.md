@@ -15,6 +15,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 ## Changelog
 * 2019/09/04 v. 0.0.9
    * split file/directory structure
+   * better CSS
 * 2019/09/02 v. 0.0.8
    * bugfix
 * 2019/08/29 v. 0.0.7
