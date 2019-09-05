@@ -1,7 +1,10 @@
 <?php
 if (!defined('ABSPATH')) die('uh');
 
-// function to get info from wpapi
+/**
+ * CPplugin_info( $plugin_name ) : array( $requires, $version )
+ * 
+ */
 function CPplugin_info( $plugin_name ){
     $plugin_url = "http://wpapi.org/api/plugin/$plugin_name.json";
     if ( false === ( $response = get_transient( 's_pinfo_'.$plugin_name ) ) ) {
@@ -11,7 +14,8 @@ function CPplugin_info( $plugin_name ){
 	$response = json_decode( $response, true );
 	$requires = $response['requires'];
 	$version = $response['version'];
-	return "Requires wp $requires for version $version.";   
+	// return "Requires wp $requires for version $version."; 
+	return array( $requires, $version );  
 }
 
 ?>

@@ -8,9 +8,12 @@
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Author: Gieffe edizioni srl
 * Author URI: https://www.gieffeedizioni.it/classicpress
+* Text Domain: cpc
 */
 
 if (!defined('ABSPATH')) die('uh');
+
+
 
 /**
  *
@@ -47,5 +50,11 @@ require "inc/change-plugin-page.php";
  *
  */
 require "inc/popular-menu.php";
+
+// Load text domain
+add_action( 'plugins_loaded', 'cpc_load_textdomain' );
+function cpc_load_textdomain() {
+	load_plugin_textdomain( 'cpc', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+}
 
 ?>

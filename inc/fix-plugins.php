@@ -21,4 +21,17 @@ function cpcompatibility_fix_rankmath(){
 	}
 }
 
+array_push( $fixed_plugins, 'seo-by-rank-math' );
+/**
+*
+* function cpcompatibility_fixed_plugin ( ) : array ( )
+* return an array of slugs of fixed plugins
+*
+*/
+
+function cpcompatibility_fixed_plugin(){
+	global $fixed_plugins;
+	return $fixed_plugins;
+}
+
 ?>
