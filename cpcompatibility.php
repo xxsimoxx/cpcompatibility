@@ -54,5 +54,4 @@ add_action( 'plugins_loaded', 'cpc_load_textdomain' );
 function cpc_load_textdomain() {
 	load_plugin_textdomain( 'cpc', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
 }
-
 ?>
