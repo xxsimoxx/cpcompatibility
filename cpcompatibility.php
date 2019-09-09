@@ -3,7 +3,7 @@
 * Plugin Name: CPcompatibility
 * Plugin URI: https://www.gieffeedizioni.it/classicpress
 * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
-* Version: 0.0.9
+* Version: 0.0.10
 * License: GPL2
 * License URI: https://www.gnu.org/licenses/gpl-2.0.html
 * Author: Gieffe edizioni srl

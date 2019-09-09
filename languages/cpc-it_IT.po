@@ -3,7 +3,6 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CPcompatibility 0.0.9\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
 "Last-Translator: root <simone@gieffeedizioni.it>\n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +35,7 @@ msgstr ""
 #. translators: %1$s: WP version required, %2$s: plugin version.
 #: inc/change-plugin-page.php:15
 msgid "Requires WordPress %1$s for version %2$s.<br>"
-msgstr "La versione %2$s necessita Wordpress %1$s.<br>"
+msgstr "La versione %2$s necessita WordPress %1$s.<br>"
 
 #: inc/change-plugin-page.php:18
 msgid "Fixed by cpcompatibility"
