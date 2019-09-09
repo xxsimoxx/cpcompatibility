@@ -13,6 +13,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
 ## Changelog
+* v0.0.10 work in progress
 * 2019/09/05 v. 0.0.9
    * split file/directory structure
    * better CSS

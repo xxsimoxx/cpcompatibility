@@ -13,8 +13,6 @@
 
 if (!defined('ABSPATH')) die('uh');
 
-
-
 /**
  *
  * General functions to get plugin information frof wpapi.org
