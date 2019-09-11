@@ -1,6 +1,8 @@
 # cpcompatibility
 This plugin is for fixing some compatibility issues for ClassicPress.
 
+![version compatibility](https://img.shields.io/endpoint?url=https://www.gieffeedizioni.it/.cpup.json)
+
 ## Functions
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)
