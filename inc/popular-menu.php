@@ -22,7 +22,6 @@ function CPplugincheck_page() {
 	$listlimit=200;
 	$browse="popular";
 	//	'popular','featured','news' are the alternatives
-	
 ?>
 
 <div class="wrap">

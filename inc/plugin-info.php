@@ -14,7 +14,6 @@ function CPplugin_info( $plugin_name ){
 	$response = json_decode( $response, true );
 	$requires = $response['requires'];
 	$version = $response['version'];
-	// return "Requires wp $requires for version $version."; 
 	return array( $requires, $version );  
 }
 

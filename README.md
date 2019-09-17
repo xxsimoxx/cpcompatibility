@@ -16,6 +16,8 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 
 ## Changelog
 * v0.0.10 - work in progress
+	* function `cpcompatibility_fixed_plugin()` return an array of slugs of fixed plugins
+	* wp core check-update now supports --fields and --format options
 * 2019/09/05 v. 0.0.9
    * split file/directory structure
    * better CSS
