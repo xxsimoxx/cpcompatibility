@@ -95,9 +95,11 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				$pluginzip = new ZipArchive;
 				$res = $pluginzip->open( $plugin_name, ZipArchive::CREATE );
 				$renamethis =  rtrim( $pluginzip->getNameIndex(0), "/" );
+				$renameto = preg_replace('/-/', '_', $args[1]);
+				
 				$i=0;
 				while($item_name = $pluginzip->getNameIndex($i)){
-					$pluginzip->renameIndex( $i, preg_replace("/^$renamethis/", $args[1], $item_name ) );
+					$pluginzip->renameIndex( $i, preg_replace("/^$renamethis/", $renameto, $item_name ) );
 					$i++;
 				}
 				$pluginzip->close();
@@ -105,13 +107,14 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				$activateoption = WP_CLI\Utils\get_flag_value($assoc_args, 'activate' );
 				$activate = ( is_null( $activateoption ) ) ? "" : "--activate";
 				$forceoption = WP_CLI\Utils\get_flag_value($assoc_args, 'force' );
-				$force = ( is_null( $forceoption ) ) ? "" : "wp plugin delete --force";
+				$force = ( is_null( $forceoption ) ) ? "" : "--force";
 				$options = array(
 					'return'     => false,   // Return 'STDOUT'; use 'all' for full object.
 					'launch'     => false,  // Reuse the current process.
 					'exit_error' => true,   // Halt script execution on error.
 				);
-				$plugins = WP_CLI::runcommand( "plugin install $plugin_name $activate $force", $options );
+				$plugins = WP_CLI::runcommand( "plugin install \"$plugin_name\" $activate $force", $options );
+				
 				unlink( $plugin_name );
 			} else {
 				WP_CLI::error( $response['response']['code'] . ": " . $response['response']['message'] );

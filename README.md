@@ -1,8 +1,6 @@
 # cpcompatibility
 This plugin is for fixing some compatibility issues for ClassicPress.
 
-![version compatibility](https://img.shields.io/endpoint?url=https://www.gieffeedizioni.it/.cpup.json)
-
 ## Functions
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)
@@ -16,7 +14,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
 ## Changelog
-* 2019/09/20 v0.1.0  WORK in PROGRESS in attesa CP 1.1.0 - WORK IN PROGRESS
+* 2019/09/20 v0.1.0
 	* added `wp plugin latestgit` to install from GitHub
 	* function `cpcompatibility_fixed_plugin()` return an array of slugs of fixed plugins
 	* wp core check-update now supports --fields and --format options
