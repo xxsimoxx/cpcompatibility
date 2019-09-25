@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the CPcompatibility plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: CPcompatibility 0.0.9\n"
+"Project-Id-Version: CPcompatibility 0.0.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-09-05T13:43:36+02:00\n"
+"POT-Creation-Date: 2019-09-25T09:34:19+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: cpc\n"
@@ -19,8 +19,7 @@ msgid "CPcompatibility"
 msgstr ""
 
 #. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://www.gieffeedizioni.it/classicpress"
+msgid "https://github.com/xxsimoxx/cpcompatibility"
 msgstr ""
 
 #. Description of the plugin
@@ -29,6 +28,15 @@ msgstr ""
 
 #. Author of the plugin
 msgid "Gieffe edizioni srl"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.gieffeedizioni.it/classicpress"
+msgstr ""
+
+#. Translators: %s is the new version available
+#: cpcompatibility.php:84
+msgid "NEW v%s"
 msgstr ""
 
 #. translators: %1$s: WP version required, %2$s: plugin version.
@@ -44,41 +52,41 @@ msgstr ""
 msgid "CP plugin compatibility"
 msgstr ""
 
-#: inc/popular-menu.php:29
+#: inc/popular-menu.php:28
 msgid "Plugins not ClassicPress-friendly"
 msgstr ""
 
-#: inc/popular-menu.php:30
+#: inc/popular-menu.php:29
 msgid "List of <i>your</i> plugins incompatible with WordPress 4.x"
 msgstr ""
 
 #. translators: %1$s: plugin name, %2$s: WP version required, %3$s: plugin version.
-#: inc/popular-menu.php:39
+#: inc/popular-menu.php:38
 msgid "<b>%1$s</b> requires wp %2$s for version %3$s.<br>"
 msgstr ""
 
-#: inc/popular-menu.php:46
+#: inc/popular-menu.php:45
 msgid "(none)"
 msgstr ""
 
 #. translators: %1$s: plugin number, %2$s: plugin type()popular, featured...
-#: inc/popular-menu.php:52
+#: inc/popular-menu.php:51
 msgid "List of %1$s top %2$s plugins and required WordPress version"
 msgstr ""
 
-#: inc/popular-menu.php:83
+#: inc/popular-menu.php:82
 msgid "Slug"
 msgstr ""
 
-#: inc/popular-menu.php:84
+#: inc/popular-menu.php:83
 msgid "Downloaded"
 msgstr ""
 
-#: inc/popular-menu.php:85
+#: inc/popular-menu.php:84
 msgid "Minimum<br>WordPress version"
 msgstr ""
 
 #. translators: this is the thousands separator
-#: inc/popular-menu.php:90
+#: inc/popular-menu.php:89
 msgid "&nbsp;"
 msgstr ""

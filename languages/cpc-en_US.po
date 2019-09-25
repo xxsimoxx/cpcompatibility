@@ -4,33 +4,72 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPcompatibility 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
+"POT-Creation-Date: 2019-09-25T09:34:19+02:00\n"
+"PO-Revision-Date: 2019-09-05 13:45+0200\n"
 "Last-Translator: root <simone@gieffeedizioni.it>\n"
 "Language-Team: Italian\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-09-05T13:43:36+02:00\n"
-"PO-Revision-Date: 2019-09-05 13:45+0200\n"
 "X-Generator: WP-CLI 2.3.0\n"
 "X-Domain: cpc\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. translators: this is the thousands separator
+#: inc/popular-menu.php:89
+msgid "&nbsp;"
+msgstr ""
+
+#: inc/popular-menu.php:45
+msgid "(none)"
+msgstr ""
+
+#. translators: %1$s: plugin name, %2$s: WP version required, %3$s: plugin version.
+#: inc/popular-menu.php:38
+msgid "<b>%1$s</b> requires wp %2$s for version %3$s.<br>"
+msgstr ""
+
+#: inc/popular-menu.php:10
+msgid "CP plugin compatibility"
+msgstr ""
 
 #. Plugin Name of the plugin
 msgid "CPcompatibility"
 msgstr ""
 
-#. Plugin URI of the plugin
-#. Author URI of the plugin
-msgid "https://www.gieffeedizioni.it/classicpress"
+#: inc/popular-menu.php:83
+msgid "Downloaded"
 msgstr ""
 
-#. Description of the plugin
-msgid "Tweaks for working with CP: wpcli compatibility, plugin checks."
+#: inc/change-plugin-page.php:18
+msgid "Fixed by cpcompatibility"
 msgstr ""
 
 #. Author of the plugin
 msgid "Gieffe edizioni srl"
+msgstr ""
+
+#. translators: %1$s: plugin number, %2$s: plugin type()popular, featured...
+#: inc/popular-menu.php:51
+msgid "List of %1$s top %2$s plugins and required WordPress version"
+msgstr ""
+
+#: inc/popular-menu.php:29
+msgid "List of <i>your</i> plugins incompatible with WordPress 4.x"
+msgstr ""
+
+#: inc/popular-menu.php:84
+msgid "Minimum<br>WordPress version"
+msgstr ""
+
+#. Translators: %s is the new version available
+#: cpcompatibility.php:84
+msgid "NEW v%s"
+msgstr ""
+
+#: inc/popular-menu.php:28
+msgid "Plugins not ClassicPress-friendly"
 msgstr ""
 
 #. translators: %1$s: WP version required, %2$s: plugin version.
@@ -38,49 +77,18 @@ msgstr ""
 msgid "Requires WordPress %1$s for version %2$s.<br>"
 msgstr ""
 
-#: inc/change-plugin-page.php:18
-msgid "Fixed by cpcompatibility"
-msgstr ""
-
-#: inc/popular-menu.php:10
-msgid "CP plugin compatibility"
-msgstr ""
-
-#: inc/popular-menu.php:29
-msgid "Plugins not ClassicPress-friendly"
-msgstr ""
-
-#: inc/popular-menu.php:30
-msgid "List of <i>your</i> plugins incompatible with WordPress 4.x"
-msgstr ""
-
-#. translators: %1$s: plugin name, %2$s: WP version required, %3$s: plugin version.
-#: inc/popular-menu.php:39
-msgid "<b>%1$s</b> requires wp %2$s for version %3$s.<br>"
-msgstr ""
-
-#: inc/popular-menu.php:46
-msgid "(none)"
-msgstr ""
-
-#. translators: %1$s: plugin number, %2$s: plugin type()popular, featured...
-#: inc/popular-menu.php:52
-msgid "List of %1$s top %2$s plugins and required WordPress version"
-msgstr ""
-
-#: inc/popular-menu.php:83
+#: inc/popular-menu.php:82
 msgid "Slug"
 msgstr ""
 
-#: inc/popular-menu.php:84
-msgid "Downloaded"
+#. Description of the plugin
+msgid "Tweaks for working with CP: wpcli compatibility, plugin checks."
 msgstr ""
 
-#: inc/popular-menu.php:85
-msgid "Minimum<br>WordPress version"
+#. Plugin URI of the plugin
+msgid "https://github.com/xxsimoxx/cpcompatibility"
 msgstr ""
 
-#. translators: this is the thousands separator
-#: inc/popular-menu.php:90
-msgid "&nbsp;"
+#. Author URI of the plugin
+msgid "https://www.gieffeedizioni.it/classicpress"
 msgstr ""
