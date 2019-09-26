@@ -122,8 +122,6 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		}
 		
 	}
-	
 	WP_CLI::add_command( 'plugin', 'cp_plugin_install_latest_git_release' );
 }
-
 ?>

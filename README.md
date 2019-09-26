@@ -20,6 +20,8 @@ If not installed, you will be noticed about new releases on the plugin page,
 and you'll need to install the new version manually.
 
 ## Changelog
+* 2019/09/25 v0.0.11-dev
+	* bugfix: wp core check-update returned an extra line
 * 2019/09/25 v0.0.10
 	* added `wp plugin latestgit` to install from GitHub
 	* function `cpcompatibility_fixed_plugin()` return an array of slugs of fixed plugins
