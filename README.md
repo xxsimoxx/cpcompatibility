@@ -4,6 +4,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 ## Functions
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)
+* Caldera Forms > 1.8.4
 
 ### Fix wp-cli 
 * Fix `wp core check-update` (only supports --fields and --format options)
@@ -20,8 +21,9 @@ If not installed, you will be noticed about new releases on the plugin page,
 and you'll need to install the new version manually.
 
 ## Changelog
-* 2019/09/25 v0.0.11-dev
+* 2019/09/29 v0.0.11-dev
 	* bugfix: wp core check-update returned an extra line
+	* adds Caldera Forms > 1.8.4 (missing wp-components style)
 * 2019/09/25 v0.0.10
 	* added `wp plugin latestgit` to install from GitHub
 	* function `cpcompatibility_fixed_plugin()` return an array of slugs of fixed plugins

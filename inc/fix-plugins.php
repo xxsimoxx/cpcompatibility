@@ -21,6 +21,24 @@ function cpcompatibility_fix_rankmath(){
 	}
 }
 
+// Fix Caldera Forms
+add_action( 'admin_init', 'cpcompatibility_fix_calderaforms' );
+function cpcompatibility_fix_calderaforms(){
+	global $fixed_plugins;
+	if ( is_plugin_active( 'caldera-forms/caldera-core.php' ) ) {
+		// lodash missing. Fixed in 1.0.31
+		$calderainfo = get_plugin_data( ABSPATH . 'wp-content/plugins/caldera-forms/caldera-core.php');
+		$calderaversion = $calderainfo['Version'];
+		if ( version_compare( $calderaversion, '1.8.4', '>' ) ){
+			if ( ! wp_style_is( 'wp-components', 'registered' ) ) {
+				array_push( $fixed_plugins, 'caldera-forms' );
+				wp_register_style( 'wp-components', plugins_url( 'js/fake.min.js', __FILE__ ) );
+			}
+		}
+
+	}
+}
+
 /**
 *
 * function cpcompatibility_fixed_plugin ( ) : array ( )
