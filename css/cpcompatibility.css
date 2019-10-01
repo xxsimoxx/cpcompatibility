@@ -1,5 +1,5 @@
 .cpc th, td {
-	padding: 0px 15px 0px 15px;
+	padding: 0 15px 0 15px;
 }
 .cpc tr:nth-child(even){
 	background-color:white;
