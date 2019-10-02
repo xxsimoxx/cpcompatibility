@@ -22,8 +22,12 @@ This allows to upgrade to the latest code.
 If not installed, you will be noticed about new releases on the plugin page,
 and you'll need to install the new version manually.
 
+### Screenshots
+![plugin page](img/plugin-page.jpg)
+![pupolar page](img/popular-page.jpg)
+
 ## Changelog
-* 2019/09/29 v0.0.11-dev
+* 2019/09/29 v0.0.11
 	* bugfix: wp core check-update returned an extra line
 	* adds Caldera Forms > 1.8.4 (missing wp-components style)
 * 2019/09/25 v0.0.10
