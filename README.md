@@ -1,6 +1,8 @@
 # cpcompatibility
 This plugin is for fixing some compatibility issues for ClassicPress.
 
+![plugin page](img/plugin_page.jpg)
+
 ## Functions
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)
