@@ -25,7 +25,7 @@ and you'll need to install the new version manually.
 ![pupolar page](img/popular-page.jpg)
 
 ## Changelog
-* 2019/10/02 v0.0.12-dev
+* 2019/10/13 v0.0.12
 	* bugfix: PHP 7.4 compatibility
 * 2019/10/02 v0.0.11
 	* bugfix: wp core check-update returned an extra line
