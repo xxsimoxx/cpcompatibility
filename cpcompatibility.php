@@ -3,7 +3,7 @@
  * Plugin Name: CPcompatibility
  * Plugin URI: https://github.com/xxsimoxx/cpcompatibility
  * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
- * Version: 0.0.12
+ * Version: 0.0.13
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author: Gieffe edizioni srl
