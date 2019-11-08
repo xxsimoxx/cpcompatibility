@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Plugin Name: CPcompatibility
  * Plugin URI: https://github.com/xxsimoxx/cpcompatibility
  * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 

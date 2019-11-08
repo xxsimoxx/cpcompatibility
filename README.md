@@ -21,8 +21,8 @@ If not installed, you will be noticed about new releases on the plugin page,
 and you'll need to install the new version manually.
 
 ### Screenshots
-![plugin page](img/plugin-page.jpg)
-![pupolar page](img/popular-page.jpg)
+![plugin page](assets/plugin-page.jpg)
+![pupolar page](assets/popular-page.jpg)
 
 ## Changelog
 * 2019/10/XX v0.0.13
