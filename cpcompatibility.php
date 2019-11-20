@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name: CPcompatibility
- * Plugin URI: https://github.com/xxsimoxx/cpcompatibility
+ * Plugin URI: https://software.gieffeedizioni.it
  * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
- * Version: 0.0.13
+ * Version: 0.1.0
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author: Gieffe edizioni srl
@@ -13,6 +13,14 @@
  */
 
 if (!defined('ABSPATH')) die('uh');
+
+/**
+ *
+ * Add auto updater
+ * https://codepotent.com/classicpress/plugins/update-manager/
+ *
+ */
+require_once( 'inc/UpdateClient.class.php' );
 
 /**
  *
