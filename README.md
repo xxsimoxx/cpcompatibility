@@ -14,12 +14,6 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Mark plugins not compatible with WP version 4.9 in plugins admin page
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
-### Updating
-This plugin supports [GitHub Updater](https://github.com/afragen/github-updater).
-This allows to upgrade to the latest code.
-If not installed, you will be noticed about new releases on the plugin page,
-and you'll need to install the new version manually.
-
 ### Screenshots
 ![plugin page](images/screenshot-1.jpg)
 ![pupolar page](images/screenshot-2.jpg)
