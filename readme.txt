@@ -1,7 +1,7 @@
 === vars ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.1.0
+Version:            0.1.1
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -35,6 +35,9 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+
+= 0.1.1 =
+* Nicer plugins page with links and ordered
 
 = 0.1.0 =
 * Add autoupdate code

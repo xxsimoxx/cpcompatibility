@@ -5,6 +5,7 @@ if (!defined('ABSPATH')) die('uh');
 // This code adds a menu in the admin interface to list 
 // plugins that have an update that don't support WP4
 
+
 add_action('admin_menu', 'CPplugincheck_create_submenu');
 function CPplugincheck_create_submenu() {
 	$cpc_page_name = __( 'CP plugin compatibility', 'cpc');
@@ -66,7 +67,7 @@ function CPplugincheck_page() {
 				'donate_link' => false,
 				'tags' => false,
 				'sections' => false,
-				'homepage' => false,
+				'homepage' => true,
 				'added' => false,
 				'last_updated' => false,
 				'compatibility' => false,
@@ -76,6 +77,12 @@ function CPplugincheck_page() {
 			)
 		)
 	); 
+	
+	$ordered_list = $call_api->{'plugins'};
+
+	usort($ordered_list,function ($a, $b) {
+		return $b->{'downloaded'} - $a->{'downloaded'};
+	});
     if ( is_wp_error( $call_api ) ) {
         echo '<pre>' . print_r( $call_api->get_error_message(), true ) . '</pre>';
     } else {
@@ -83,10 +90,10 @@ function CPplugincheck_page() {
     	$table_downloaded = __( 'Downloaded', 'cpc' );
     	$table_requires = __( 'Minimum<br>WordPress version', 'cpc' );
  		echo "<table class='cpc'><tr><th>$table_slug<th>$table_downloaded<th>$table_requires</tr>\n";
-		foreach ( $call_api->{'plugins'} as $element ) {
+		foreach ( $ordered_list as $element ) {
 			$extraclass = ( preg_match( '/^5/', $element->{'requires'} ) ) ? 'class="cpc-evidence"' : "";
 			/* translators: this is the thousands separator */
-			echo "<tr $extraclass><td>" . $element->{'slug'} . "<td class='cpc-number'>" . number_format( $element->{'downloaded'}, 0, ",", __( '&nbsp;', 'cpc' ) ) . "<td>" . $element->{'requires'} . "</tr>\n";
+			echo "<tr $extraclass><td><a href='" . $element->{'homepage'} . "'>" . $element->{'slug'} . "</a><td class='cpc-number'>" . number_format( $element->{'downloaded'}, 0, ",", __( '&nbsp;', 'cpc' ) ) . "<td>" . $element->{'requires'} . "</tr>\n";
 		}	 
  		echo "</table></div>\n";
 	}
