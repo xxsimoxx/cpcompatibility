@@ -86,16 +86,35 @@ function CPplugincheck_page() {
     if ( is_wp_error( $call_api ) ) {
         echo '<pre>' . print_r( $call_api->get_error_message(), true ) . '</pre>';
     } else {
+    	$totalplugin=0;
+    	$totalincplugin=0;
+    	$totaldownload=0;
+    	$totalincdownload=0;
+    	$outputtable="";
     	$table_slug = __( 'Slug', 'cpc' );
     	$table_downloaded = __( 'Downloaded', 'cpc' );
     	$table_requires = __( 'Minimum<br>WordPress version', 'cpc' );
- 		echo "<table class='cpc'><tr><th>$table_slug<th>$table_downloaded<th>$table_requires</tr>\n";
 		foreach ( $ordered_list as $element ) {
-			$extraclass = ( preg_match( '/^5/', $element->{'requires'} ) ) ? 'class="cpc-evidence"' : "";
+			$totalplugin++;
+			$totaldownload+=$element->{'downloaded'};
+			$extraclass = "";
+			if ( preg_match( '/^5/', $element->{'requires'} ) ){
+				$extraclass = 'class="cpc-evidence"';
+				$totalincplugin++;
+    			$totalincdownload+=$element->{'downloaded'};
+			};
 			/* translators: this is the thousands separator */
-			echo "<tr $extraclass><td><a href='" . $element->{'homepage'} . "'>" . $element->{'slug'} . "</a><td class='cpc-number'>" . number_format( $element->{'downloaded'}, 0, ",", __( '&nbsp;', 'cpc' ) ) . "<td>" . $element->{'requires'} . "</tr>\n";
+			$outputtable .= "<tr $extraclass><td><a href='" . $element->{'homepage'} . "'>" . $element->{'slug'} . "</a><td class='cpc-number'>" . number_format( $element->{'downloaded'}, 0, ",", __( '&nbsp;', 'cpc' ) ) . "<td>" . $element->{'requires'} . "</tr>\n";
 		}	 
- 		echo "</table></div>\n";
+  		$totaldownload = number_format( $totaldownload, 0, ",", __( '&nbsp;', 'cpc' ) );
+    	$totalincdownload = number_format( $totalincdownload, 0, ",", __( '&nbsp;', 'cpc' ) );
+ 		/* Translators Total plugins: 1 number of plugins 2 downloaded total times*/
+ 		printf( esc_html__( '%1$s popular plugins have ben downloaded %2$s times.', 'cpc' ) . "<br>" , $totalplugin, $totaldownload );
+ 		/* Translators Incompatible plugins: 1 number of plugins 2 downloaded total times*/
+ 		printf( esc_html__( '%1$s of those are incompatible with ClassicPress and have ben downloaded %2$s times.', 'cpc' ) . "</span>", $totalincplugin, $totalincdownload );
+ 		echo "<table class='cpc'><tr><th>$table_slug<th>$table_downloaded<th>$table_requires</tr>\n";
+ 		echo "$outputtable</table><span>";
+ 		echo "</div>\n"; 
 	}
 }
 ?>
