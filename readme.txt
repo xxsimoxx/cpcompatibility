@@ -38,6 +38,8 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 
 = 0.1.1 =
 * Nicer plugins page with links and ordered
+* Icon in plugin_action_links
+* Code cleanup
 
 = 0.1.0 =
 * Add autoupdate code

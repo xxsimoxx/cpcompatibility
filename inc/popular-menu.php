@@ -114,4 +114,3 @@ function CPplugincheck_page() {
  		echo "</div>\n"; 
 	}
 }
-?>

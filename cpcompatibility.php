@@ -63,4 +63,17 @@ function cpc_load_textdomain() {
 	load_plugin_textdomain( 'cpc', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
 }
 
+/*
+ *
+ * Add a statistics link in plugins page
+ *
+ */
+ 
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'cpcompatibility_pal');
+function cpcompatibility_pal( $links ) {
+	$link = '<a href="' . admin_url('tools.php?page=cpcompatibility') . '" title="' . __('CP plugin compatibility', 'cpc') . '"><i class="dashicon dashicons-chart-bar"></i></a>';
+	array_unshift($links, $link);
+	return $links;
+}
+
 ?>
