@@ -37,6 +37,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 == Changelog ==
 
 = 0.1.1 =
+* wpapi.org used for plugin information replaced with plugins_api()
 * Nicer plugins page with links and ordered
 * Icon in plugin_action_links
 * Code cleanup

@@ -25,7 +25,7 @@
  */
 
 // EDIT HERE: Make this unique. Example: YourDevName\YourPluginName;
-namespace XxSimoXx\CpCpompatibility;
+namespace XSSimoXX\CpCpompatibility;
 
 // Prevent direct access.
 if (!defined('ABSPATH')) {
