@@ -33,9 +33,9 @@ function CPplugincheck_page() {
 		$path = explode("/", $row);
 		$slug = $path[0];
 		$plugin_info = CPplugin_info($slug);
+		if (($plugin_info !== "") && version_compare($plugin_info[0], '5', '>=')){
 		/* translators: %1$s: plugin name, %2$s: WP version required, %3$s: plugin version. */
 		$plugin_requires = sprintf (__('<b>%1$s</b> requires wp %2$s for version %3$s.<br>', "cpc"), $innerArray['Name'], $plugin_info[0], $plugin_info[1]);
-		if (substr($plugin_info[0], 0, 1) > 4){
 			echo $plugin_requires;
 			$pcount++;
 		}  
