@@ -1,4 +1,4 @@
-=== vars ===
+=== cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
 Version:            0.1.1
@@ -10,7 +10,7 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.1.0/cpcompatibility.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.1.1/cpcompatibility.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
