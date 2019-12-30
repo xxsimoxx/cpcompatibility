@@ -25,7 +25,7 @@
  */
 
 // EDIT: Make this unique. Example: YourDevName\YourPluginName;
-namespace XXSimoXX\CPCompatibility;
+namespace XXSimoXX\CPCompatibilityUpdate;
 
 // EDIT: URL where Update Manager is installed; with trailing slash!
 const UPDATE_SERVER = 'https://software.gieffeedizioni.it/';
