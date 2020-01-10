@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.1.3
+Version:            0.1.4
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,7 +10,7 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.1.3/cpcompatibility.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.1.4/cpcompatibility.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,12 +29,17 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Mark plugins not compatible with WP version 4.9 in plugins admin page
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
+To help us know the number of active installations of this plugin, we collect and store anonymized data when the plugin check in for updates. The date and unique plugin identifier are stored as plain text and the requesting URL is stored as a non-reversible hashed value. This data is stored for up to 28 days.
+
 == Screenshots ==
 
 1. Plugin Page
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+
+= 0.1.4 =
+* Updated Update Manager
 
 = 0.1.3 =
 * Minor fixes
