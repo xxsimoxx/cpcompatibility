@@ -31,7 +31,7 @@ function cp_correct_check_update( ) {
 				}
 				// $cp_version is only needed to evalutate "update_type"
 				// Is the right way to find the path?
-				include( get_home_path() . "/wp-includes/version.php" );
+				include_once( get_home_path() . "/wp-includes/version.php" );
 				$cp_table_output[0]["version"] = $gcu[0]->{'version'};
 				$cp_table_output[0]["package_url"] = $gcu[0]->{'download'};
 				// Don't break anything if $cp_version is null

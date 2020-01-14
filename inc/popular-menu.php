@@ -49,7 +49,7 @@ function CPplugincheck_page() {
 	printf ( esc_html__( 'List of %1$s top %2$s plugins and required WordPress version' , 'cpc' ), $listlimit, $browse ); 
 	echo '</H3>';
 
-	include ( ABSPATH . "wp-admin/includes/plugin-install.php" );
+	include_once ( ABSPATH . "wp-admin/includes/plugin-install.php" );
 	$call_api = plugins_api( 'query_plugins',
 		array(
 			'browse'   => $browse,
