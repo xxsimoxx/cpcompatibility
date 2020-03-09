@@ -12,7 +12,7 @@ $fixed_plugins = array();
  *
  */
 add_action( 'admin_init', 'cpcompatibility_fix_rankmath' );
-function cpcompatibility_fix_rankmath(){
+function cpcompatibility_fix_rankmath() {
 	global $fixed_plugins;
 	if ( is_plugin_active( 'seo-by-rank-math/rank-math.php' ) ) {
 		// lodash missing. Fixed in 1.0.31
@@ -31,14 +31,14 @@ function cpcompatibility_fix_rankmath(){
 /*
  * Caldera Forms
  *
- * Caldera Forms registers admin which depends on admin-client 
- * which depends on wp-components, a Gutenberg script. 
+ * Caldera Forms registers admin which depends on admin-client
+ * which depends on wp-components, a Gutenberg script.
  * Other than that it works fine as of version 1.8.5:
  * https://forums.classicpress.net/t/problem-with-caldera-forms-and-classicpress/1600
  *
  */
 add_action( 'admin_init', 'cpcompatibility_fix_calderaforms' );
-function cpcompatibility_fix_calderaforms(){
+function cpcompatibility_fix_calderaforms() {
 	global $fixed_plugins;
 	if ( is_plugin_active( 'caldera-forms/caldera-core.php' ) ) {
 		// lodash missing. Fixed in 1.0.31
@@ -61,7 +61,7 @@ function cpcompatibility_fix_calderaforms(){
 *
 */
 
-function cpcompatibility_fixed_plugin(){
+function cpcompatibility_fixed_plugin() {
 	global $fixed_plugins;
 	return $fixed_plugins;
 }

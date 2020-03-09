@@ -11,7 +11,7 @@ function cp_correct_check_update( ) {
 	// if we have ClassicPress
 	if ( function_exists( 'classicpress_version' ) && WP_CLI ) {
 		$gcu =  get_core_updates();
-		if ( 'latest' == $gcu[0]->{'response'} ){ 
+		if ( 'latest' == $gcu[0]->{'response'} ) {
 			WP_CLI::success( "ClassicPress is at the latest version." );
 		} else {
 			if ( $gcu ) {
@@ -20,7 +20,7 @@ function cp_correct_check_update( ) {
 				$cp_current_command = strtr ( trim(file_get_contents("/proc/$cp_current_pid/cmdline"), "\0"), "\0", " ");
 				$cp_fields_match = array();
 				if ( preg_match_all ( '/ --fields=([a-z,_]+)/' , $cp_current_command, $cp_fields_match ) > 0 ){
-					$cp_arg_fields = $cp_fields_match[1][0] ;
+					$cp_arg_fields = $cp_fields_match[1][0];
 				} else {
 					$cp_arg_fields = "version,update_type,package_url";
 				}
@@ -39,7 +39,7 @@ function cp_correct_check_update( ) {
 				WP_CLI\Utils\format_items( $cp_format_fields, $cp_table_output, $cp_arg_fields );
 			}
 		};
-		// then exit to prevent the core check-update command to 
+		// then exit to prevent the core check-update command to
 		// continue his work
 		exit;
 	};
@@ -47,7 +47,7 @@ function cp_correct_check_update( ) {
 
 if ( defined( 'WP_CLI' ) && WP_CLI ) {
 	class cp_plugin_install_latest_git_release {
-	
+
 		/**
 		* Download the latest release of a plugin from GitHub.
 		*
@@ -64,7 +64,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 		*
 		* [--force]
 		* : If set, the command will overwrite any installed version of the plugin, without prompting
-    	* for confirmation.
+		* for confirmation.
 		*
 		* ## EXAMPLES
 		*
@@ -81,14 +81,14 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			$response = wp_remote_get( 'https://api.github.com/repos/' . $git_repo . '/releases/latest' , array( 'redirection' => 5 ) );
 			if ( 200 === $response['response']['code'] ){
 				$git_data = json_decode ( $response['body'], true );
-				$opts = array( 'http'=>array( 'header' => "User-Agent:WPcli/1.0\r\n") ); 
+				$opts = array( 'http'=>array( 'header' => "User-Agent:WPcli/1.0\r\n") );
 				$context = stream_context_create( $opts );
 				file_put_contents( $plugin_name, file_get_contents( $git_data['zipball_url'], false, $context ) );
 
 				// BEGIN garbage
 				/*
 				* I'm trying to rename the first level folder of the zip from
-				* something like user-repo-123456/ to repo/ to get the right 
+				* something like user-repo-123456/ to repo/ to get the right
 				* folder name for the plugin, but in this process many assumptions
 				* are likeky wrong. This also relies on the presence of ZipArchive.
 				*/
@@ -96,7 +96,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				$res = $pluginzip->open( $plugin_name, ZipArchive::CREATE );
 				$renamethis =  rtrim( $pluginzip->getNameIndex(0), "/" );
 				$renameto = preg_replace('/-/', '_', $args[1]);
-				
+
 				$i=0;
 				while($item_name = $pluginzip->getNameIndex($i)){
 					$pluginzip->renameIndex( $i, preg_replace("/^$renamethis/", $renameto, $item_name ) );
@@ -109,18 +109,18 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 				$forceoption = WP_CLI\Utils\get_flag_value($assoc_args, 'force' );
 				$force = ( is_null( $forceoption ) ) ? "" : "--force";
 				$options = array(
-					'return'     => false,   // Return 'STDOUT'; use 'all' for full object.
+					'return'     => false,   // Return STDOUT, use 'all' for full object.
 					'launch'     => false,  // Reuse the current process.
 					'exit_error' => true,   // Halt script execution on error.
 				);
 				$plugins = WP_CLI::runcommand( "plugin install \"$plugin_name\" $activate $force", $options );
-				
+
 				unlink( $plugin_name );
 			} else {
 				WP_CLI::error( $response['response']['code'] . ": " . $response['response']['message'] );
 			}
 		}
-		
+
 	}
 	WP_CLI::add_command( 'plugin', 'cp_plugin_install_latest_git_release' );
 }

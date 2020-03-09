@@ -21,6 +21,6 @@ function cp_plugin_row_meta($links, $file) {
 		array_push($links, "<span class='dashicons-before dashicons-warning'>" . sprintf (__('Requires WordPress %1$s for version %2$s.<br>', "cpc"), $plugin_info[0], $plugin_info[1]) . "</span>");
 	}
 	return $links;
-} 
+}
 
 ?>

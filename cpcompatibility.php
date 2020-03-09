@@ -2,8 +2,8 @@
 /**
  * Plugin Name: CPcompatibility
  * Plugin URI: https://software.gieffeedizioni.it
- * Description: Tweaks for working with CP: wpcli compatibility, plugin checks. 
- * Version: 0.1.5
+ * Description: Tweaks for working with CP: wpcli compatibility, plugin checks.
+ * Version: 0.1.6
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author: Gieffe edizioni srl
@@ -51,7 +51,7 @@ require "inc/change-plugin-page.php";
 
 /**
  *
- * Add a page in "tools" menu for displaying popular plugins and their 
+ * Add a page in "tools" menu for displaying popular plugins and their
  * compatibility with ClassicPress (WP 4.9.10)
  *
  */
@@ -60,7 +60,7 @@ require "inc/popular-menu.php";
 // Load text domain
 add_action( 'plugins_loaded', 'cpc_load_textdomain' );
 function cpc_load_textdomain() {
-	load_plugin_textdomain( 'cpc', false, basename( dirname( __FILE__ ) ) . '/languages' ); 
+	load_plugin_textdomain( 'cpc', false, basename( dirname( __FILE__ ) ) . '/languages' );
 }
 
 /*
@@ -68,7 +68,7 @@ function cpc_load_textdomain() {
  * Add a statistics link in plugins page
  *
  */
- 
+
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'cpcompatibility_pal');
 function cpcompatibility_pal( $links ) {
 	if (!function_exists('classicpress_version') || version_compare('1.1.0', classicpress_version(), '>')) {
