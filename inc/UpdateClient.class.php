@@ -22,14 +22,6 @@
  * -----------------------------------------------------------------------------
  */
 
-/**
- *
- * Note: this is not the original file.
- * It's modified to remove text domain.
- *
- */
-
-
 // EDIT: Make this unique. Example: YourDevName\YourPluginName;
 namespace XXSimoXX\CPCompatibility\UpdateClient;
 
@@ -76,6 +68,14 @@ class UpdateClient {
 	 * it again.
 	 */
 	private $cp_latest_version = '4.9.99';
+
+	/**
+	 * Cached component data
+	 *
+	 * As pre_set_site_transient_update_plugins is called twice by ClassicPress,
+	 * saving this value will cut an extra HTTP call to the update server.
+	 */
+	private $component_data = '';
 
 	/**
 	 * Constructor.
@@ -564,6 +564,11 @@ class UpdateClient {
 	 */
 	private function get_component_data($action, $component='') {
 
+		// If component data exists, no need to requery; return that data.
+		if (!empty($this->component_data)) {
+			return $this->component_data;
+		}
+
 		// Localize the platform version.
 		global $cp_version;
 
@@ -660,8 +665,11 @@ class UpdateClient {
 		// Get the response body; decode it as an array.
 		$data = json_decode(trim(wp_remote_retrieve_body($raw_response)), true);
 
+		// Set retrieved data to the object for reuse elsewhere.
+		$this->component_data = is_array($data) ? $data : [];
+
 		// Return the reponse body.
-		return is_array($data) ? $data : [];
+		return $this->component_data;
 
 	}
 
