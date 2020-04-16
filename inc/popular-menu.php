@@ -175,6 +175,8 @@ function CPplugincheck_page() {
 	$CPCListTable = new CPC_List_Table();
 	$CPCListTable->prepare_items();
 	$CPCListTable->display();
+	
+	echo '</div>';
 }
 
 
