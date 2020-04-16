@@ -1,6 +1,8 @@
 <?php
 
-if (!defined('ABSPATH')) die('uh');
+if (!defined('ABSPATH')) {
+	die('uh');
+}
 
 // This code adds a menu in the admin interface to list
 // plugins that have an update that don't support WP4
