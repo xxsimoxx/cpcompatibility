@@ -1,31 +1,13 @@
-.cpc th, td {
-	padding: 0 15px 0 15px;
+.wp-list-table .column-downloaded {
+	text-align:right !important;
+	width: 15%;
 }
 
-.cpc tr:nth-child(even){
-	background-color:white;
+.wp-list-table .column-minimum {
+	text-align:center !important;
+	width: 15%;
 }
 
-.cpc tr:nth-child(odd){
-	background-color:#eeeef1;
-}
-
-.cpc th{
-	background-color:#057f99;
-	color: white;
-}
-
-.cpc-evidence {
-	background-color: #eaec8e !important;
-}
-
-.cpc-number{
-	text-align: right;
-	font-family: "Courier New", Courier, mono;
-	font-weight: bold;
-}
-
-.cpc a{
-	color:#057f99;
-	text-decoration: none;
+.cpc-bad-news a, .cpc-bad-news span{
+	color: #CA4A1F !important;
 }
