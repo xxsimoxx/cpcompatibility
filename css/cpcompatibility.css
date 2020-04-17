@@ -1,11 +1,27 @@
-.wp-list-table .column-downloaded {
+.wp-list-table .column-minimum{
 	width: 15%;
 }
 
-.wp-list-table .column-minimum {
+.wp-list-table .column-downloaded{
 	width: 15%;
 }
 
-.cpc-bad-news a, .cpc-bad-news span{
+.wp-list-table .column-compatible{
+	width: 10%;
+}
+
+.cpc-is-compatible{
+	color: #339933 !important;
+}
+
+.cpc-not-compatible{
 	color: #CA4A1F !important;
+}
+
+.cpc-is-compatible::before{
+	content: "\f147";
+}
+
+.cpc-not-compatible::before{
+	content: "\f534";
 }

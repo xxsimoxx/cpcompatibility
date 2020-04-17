@@ -17,6 +17,7 @@ class CPC_List_Table extends \WP_List_Table {
 	// Output columns definition.
 	function get_columns() {
 		$columns = [
+			'compatible' => esc_html__('Compatible', 'cpc'),
 			'name'       => esc_html__('Name', 'cpc'),
 			'version'    => 'version',
 			'link'       => 'link',
@@ -38,6 +39,7 @@ class CPC_List_Table extends \WP_List_Table {
 	// Output sortable columns.
 	function get_sortable_columns() {
 		$sortable_columns = [
+			'compatible'  => ['compatible', false],
 			'name'        => ['name',       false],
 			'downloaded'  => ['downloaded', false],
 			'minimum'     => ['minimum',    false],
@@ -48,7 +50,7 @@ class CPC_List_Table extends \WP_List_Table {
 	// Callable to be used with usort.
 	function reorder($a, $b) {
 		// If no orderby or wrong orderby, default to plugin or theme name.
-		$orderby = (!empty($_GET['orderby']) && in_array($_GET['orderby'], ['name', 'downloaded', 'minimum'], true)) ? $_GET['orderby'] : 'downloaded';
+		$orderby = (!empty($_GET['orderby']) && in_array($_GET['orderby'], ['name', 'downloaded', 'minimum', 'compatible'], true)) ? $_GET['orderby'] : 'downloaded';
 		// If no order or wrong order, default to asc.
 		$order = (!empty($_GET['order']) && $_GET['order'] !== 'desc') ? 'asc' : 'desc';
 
@@ -64,12 +66,11 @@ class CPC_List_Table extends \WP_List_Table {
 		return ( $order === 'asc' ) ? $result : -$result;
 	}
 
-	// Just output the column.
+	// Define columns output.
 	function column_default($item, $column_name) {
 		return $item[$column_name];
 	}
 
-	// For "Name" column add row actions and reformat it.
 	function column_name($item) {
 		$class = '';
 		if (preg_match('/^5/', $item['minimum'])) {
@@ -79,10 +80,14 @@ class CPC_List_Table extends \WP_List_Table {
 		return sprintf('%1$s', $name);
 	}
 
-
 	function column_downloaded($item) {
 		$count = number_format($item['downloaded'], 0, '', _x(',', 'thousands separator', 'cpc'));
 		return sprintf('%1$s', $count);
+	}
+
+	function column_compatible($item) {
+		$class = '<i class="dashicons cpc-'.$item['compatible'].'-compatible"></i>';
+		return sprintf('%1$s', $class);
 	}
 
 	function load_data() {
@@ -118,6 +123,7 @@ class CPC_List_Table extends \WP_List_Table {
 		$data = [];
 		foreach ($list as $plugin) {
 			$data[] = [
+				'compatible' => (preg_match('/^5/', $plugin->requires) === 1) ? 'not' : 'is',
 				'name'       => $plugin->name,
 				'version'    => $plugin->version,
 				'link'       => $plugin->homepage,
@@ -172,7 +178,8 @@ function cpc_wp_admin_style($hook) {
 
 function CPplugincheck_page() {
 	echo '<div class="wrap">';
-	echo '<H1>'.__('Most popular plugins from WordPress.org', 'cpc').'</H1>';
+	echo '<h1>'.__('CPcompatibility', 'cpc').'</h1>';
+	echo '<h2>'.__('Most popular plugins from WordPress.org', 'cpc').'</h2>';
 
 	$CPCListTable = new CPC_List_Table();
 	$CPCListTable->prepare_items();

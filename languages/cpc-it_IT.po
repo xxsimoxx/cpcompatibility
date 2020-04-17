@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPcompatibility 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
-"POT-Creation-Date: 2020-04-17T06:31:33+00:00\n"
+"POT-Creation-Date: 2020-04-17T08:58:57+00:00\n"
 "PO-Revision-Date: 2019-09-05 13:45+0200\n"
 "Last-Translator: root <simone@gieffeedizioni.it>\n"
 "Language-Team: Italian\n"
@@ -21,7 +21,7 @@ msgctxt "thousands separator"
 msgid ","
 msgstr "."
 
-#: cpcompatibility.php:78 cpcompatibility.php:80 inc/popular-menu.php:162
+#: cpcompatibility.php:78 cpcompatibility.php:80 inc/popular-menu.php:168
 msgid "CP plugin compatibility"
 msgstr ""
 
@@ -29,7 +29,11 @@ msgstr ""
 msgid "CPcompatibility"
 msgstr ""
 
-#: inc/popular-menu.php:24
+#: inc/popular-menu.php:20
+msgid "Compatible"
+msgstr "Compatibile"
+
+#: inc/popular-menu.php:25
 msgid "Downloaded"
 msgstr "Scaricato"
 
@@ -41,15 +45,15 @@ msgstr "Corretto da cpcompatibility"
 msgid "Gieffe edizioni srl"
 msgstr ""
 
-#: inc/popular-menu.php:23
+#: inc/popular-menu.php:24
 msgid "Minimum required WP version"
 msgstr "Minima versione WP richiesta"
 
-#: inc/popular-menu.php:175
+#: inc/popular-menu.php:181
 msgid "Most popular plugins from WordPress.org"
 msgstr "Plugin pi&ugrave; popolari su WordPress.org"
 
-#: inc/popular-menu.php:20
+#: inc/popular-menu.php:21
 msgid "Name"
 msgstr "Nome"
 

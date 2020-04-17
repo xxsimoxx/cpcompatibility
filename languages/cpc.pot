@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-17T06:31:33+00:00\n"
+"POT-Creation-Date: 2020-04-17T08:58:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: cpc\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: cpcompatibility.php:78
 #: cpcompatibility.php:80
-#: inc/popular-menu.php:162
+#: inc/popular-menu.php:168
 msgid "CP plugin compatibility"
 msgstr ""
 
@@ -50,14 +50,18 @@ msgid "Requires WordPress %1$s for version %2$s.<br>"
 msgstr ""
 
 #: inc/popular-menu.php:20
+msgid "Compatible"
+msgstr ""
+
+#: inc/popular-menu.php:21
 msgid "Name"
 msgstr ""
 
-#: inc/popular-menu.php:23
+#: inc/popular-menu.php:24
 msgid "Minimum required WP version"
 msgstr ""
 
-#: inc/popular-menu.php:24
+#: inc/popular-menu.php:25
 msgid "Downloaded"
 msgstr ""
 
@@ -66,6 +70,6 @@ msgctxt "thousands separator"
 msgid ","
 msgstr ""
 
-#: inc/popular-menu.php:175
+#: inc/popular-menu.php:181
 msgid "Most popular plugins from WordPress.org"
 msgstr ""
