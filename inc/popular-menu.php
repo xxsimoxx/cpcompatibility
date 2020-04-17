@@ -55,6 +55,8 @@ class CPC_List_Table extends \WP_List_Table {
 		// Properly order numeric values or reorder text case-insensitive.
 		if ($orderby === 'downloaded') {
 			$result = $a[$orderby] - $b[$orderby];
+		} elseif ($orderby === 'minimum') {
+			$result = version_compare($a[$orderby], $b[$orderby]);
 		} else {
 			$result = strcasecmp($a[$orderby], $b[$orderby]);
 		}
@@ -140,7 +142,7 @@ class CPC_List_Table extends \WP_List_Table {
 		$alldata = $this->load_data();
 		usort($alldata, [&$this, 'reorder']);
 
-		$per_page = 20;
+		$per_page = 10;
 		$total_items = count($alldata);
 		$current_page = $this->get_pagenum();
 
@@ -170,12 +172,12 @@ function cpc_wp_admin_style($hook) {
 
 function CPplugincheck_page() {
 	echo '<div class="wrap">';
-	echo '<H1>'.__('Plugins not ClassicPress-friendly', 'cpc').'</H1>';
+	echo '<H1>'.__('Most popular plugins from WordPress.org', 'cpc').'</H1>';
 
 	$CPCListTable = new CPC_List_Table();
 	$CPCListTable->prepare_items();
 	$CPCListTable->display();
-	
+
 	echo '</div>';
 }
 
