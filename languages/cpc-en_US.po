@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPcompatibility 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
-"POT-Creation-Date: 2019-12-05T10:37:42+01:00\n"
+"POT-Creation-Date: 2020-04-17T06:31:33+00:00\n"
 "PO-Revision-Date: 2019-09-05 13:45+0200\n"
 "Last-Translator: root <simone@gieffeedizioni.it>\n"
 "Language-Team: Italian\n"
@@ -16,33 +16,12 @@ msgstr ""
 "X-Domain: cpc\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Translators Incompatible plugins: 1 number of plugins 2 downloaded total times
-#: inc/popular-menu.php:115
-msgid ""
-"%1$s of those are incompatible with ClassicPress and have ben downloaded "
-"%2$s times."
+#: inc/popular-menu.php:84
+msgctxt "thousands separator"
+msgid ","
 msgstr ""
 
-#. Translators Total plugins: 1 number of plugins 2 downloaded total times
-#: inc/popular-menu.php:113
-msgid "%1$s popular plugins have ben downloaded %2$s times."
-msgstr ""
-
-#. translators: this is the thousands separator
-#: inc/popular-menu.php:107 inc/popular-menu.php:110 inc/popular-menu.php:111
-msgid "&nbsp;"
-msgstr ""
-
-#: inc/popular-menu.php:46
-msgid "(none)"
-msgstr ""
-
-#. translators: %1$s: plugin name, %2$s: WP version required, %3$s: plugin version.
-#: inc/popular-menu.php:39
-msgid "<b>%1$s</b> requires wp %2$s for version %3$s.<br>"
-msgstr ""
-
-#: inc/popular-menu.php:11
+#: cpcompatibility.php:78 cpcompatibility.php:80 inc/popular-menu.php:162
 msgid "CP plugin compatibility"
 msgstr ""
 
@@ -50,11 +29,11 @@ msgstr ""
 msgid "CPcompatibility"
 msgstr ""
 
-#: inc/popular-menu.php:94
+#: inc/popular-menu.php:24
 msgid "Downloaded"
 msgstr ""
 
-#: inc/change-plugin-page.php:18
+#: inc/change-plugin-page.php:15
 msgid "Fixed by cpcompatibility"
 msgstr ""
 
@@ -62,30 +41,21 @@ msgstr ""
 msgid "Gieffe edizioni srl"
 msgstr ""
 
-#. translators: %1$s: plugin number, %2$s: plugin type()popular, featured...
-#: inc/popular-menu.php:52
-msgid "List of %1$s top %2$s plugins and required WordPress version"
+#: inc/popular-menu.php:23
+msgid "Minimum required WP version"
 msgstr ""
 
-#: inc/popular-menu.php:30
-msgid "List of <i>your</i> plugins incompatible with WordPress 4.x"
+#: inc/popular-menu.php:175
+msgid "Most popular plugins from WordPress.org"
 msgstr ""
 
-#: inc/popular-menu.php:95
-msgid "Minimum<br>WordPress version"
-msgstr ""
-
-#: inc/popular-menu.php:29
-msgid "Plugins not ClassicPress-friendly"
+#: inc/popular-menu.php:20
+msgid "Name"
 msgstr ""
 
 #. translators: %1$s: WP version required, %2$s: plugin version.
-#: inc/change-plugin-page.php:15
+#: inc/change-plugin-page.php:23
 msgid "Requires WordPress %1$s for version %2$s.<br>"
-msgstr ""
-
-#: inc/popular-menu.php:93
-msgid "Slug"
 msgstr ""
 
 #. Description of the plugin
