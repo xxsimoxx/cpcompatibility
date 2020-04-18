@@ -3,48 +3,102 @@ if (!defined('ABSPATH')) {
 	die('uh');
 }
 
-// Fix wp-cli behaviour on "core check-update"
+// Fix wp-cli behaviour on "core check-update".
 if (function_exists('classicpress_version') && defined('WP_CLI') && WP_CLI) {
-	// add a hook that runs before the command
-	WP_CLI::add_hook('before_invoke:core check-update', 'cp_correct_check_update');
+	// Add a hook that runs before the command.
+	// This function must exit so the real "core check-update" is not run,
+	WP_CLI::add_hook('before_invoke:core check-update', 'cp_correct_core_check_update');
 }
 
-function cp_correct_check_update() {
-	// if we have ClassicPress
-	if (function_exists('classicpress_version') && WP_CLI) {
-		$gcu = get_core_updates();
-		if ($gcu[0]->{'response'} == 'latest') {
-			WP_CLI::success('ClassicPress is at the latest version.');
-		} else {
-			if ($gcu) {
-				// Retrieve options in a very unusual way
-				$cp_current_pid = getmypid();
-				$cp_current_command = strtr (trim(file_get_contents("/proc/$cp_current_pid/cmdline"), "\0"), "\0", ' ');
-				$cp_fields_match = [];
-				if (preg_match_all ('/ --fields=([a-z,_]+)/', $cp_current_command, $cp_fields_match) > 0) {
-					$cp_arg_fields = $cp_fields_match[1][0];
-				} else {
-					$cp_arg_fields = 'version,update_type,package_url';
-				}
-				if (preg_match_all ('/ --format=([a-z]+)/', $cp_current_command, $cp_format_match) > 0) {
-					$cp_format_fields = $cp_format_match[1][0];
-				} else {
-					$cp_format_fields = 'table';
-				}
-				// $cp_version is only needed to evalutate "update_type"
-				// Is the right way to find the path?
-				include_once(get_home_path().'/wp-includes/version.php');
-				$cp_table_output[0]['version'] = $gcu[0]->{'version'};
-				$cp_table_output[0]['package_url'] = $gcu[0]->{'download'};
-				// Don't break anything if $cp_version is null
-				$cp_table_output[0]['update_type'] = (isset ($cp_version) ? WP_CLI\Utils\get_named_sem_ver($gcu[0]->{'version'}, $cp_version) : '');
-				WP_CLI\Utils\format_items($cp_format_fields, $cp_table_output, $cp_arg_fields);
-			}
-		};
-		// then exit to prevent the core check-update command to
-		// continue his work
+function cp_correct_core_check_update() {
+
+	// Check for updates. Bail on error.
+	// When playing with versions, an empty array is returned if it's not on api.
+	if (($core_updates = get_core_updates()) === false || $core_updates === []) {
+		WP_CLI::error('Something went wrong checking for updates.');
 		exit;
-	};
-};
+	}
+
+	// We are on latest. exit.
+	if ($core_updates[0]->{'response'} === 'latest') {
+		WP_CLI::success('ClassicPress is at the latest version.');
+		exit;
+	}
+
+	// Standard options.
+	$arg_fields = 'version,update_type,package_url';
+	$format_fields = 'table';
+
+	// Retrieve command line options.
+	if (($cp_current_pid = getmypid()) !== false && ($raw_command = file_get_contents("/proc/$cp_current_pid/cmdline")) !== false) {
+
+		$current_command = strtr (trim($raw_command, "\0"), "\0", ' ');
+
+		$fields_match = [];
+		if (preg_match_all('/ --fields=([a-z,_]+)/', $current_command, $fields_match) > 0) {
+			$arg_fields = $fields_match[1][0];
+		}
+
+		$field_match = [];
+		if (preg_match_all('/ --field=([a-z_]+)/', $current_command, $field_match) > 0) {
+			$arg_fields = $field_match[1][0];
+		}
+
+		$cp_format_match = [];
+		if (preg_match_all('/ --format=([a-z]+)/', $current_command, $format_match) > 0) {
+			$format_fields = $format_match[1][0];
+		}
+
+		$minor = preg_match('/ --minor */', $current_command);
+
+		$major = preg_match('/ --major */', $current_command);
+
+	}
+
+	// Put $cp_version into scope.
+	global $cp_version;
+
+	/*
+	// Tests for multiple response.
+	$core_updates[1]->{'version'} = '1.0.1';
+	$core_updates[2]->{'version'} = '1.1.0';
+	$core_updates[3]->{'version'} = '9.0.0';
+	*/
+
+	// Prepare output array.
+	$table_output = [];
+
+	// Loop in the update list.
+	foreach ($core_updates as $index => $update) {
+
+		// Get update type and skip if options tells to.
+		$type = WP_CLI\Utils\get_named_sem_ver($update->{'version'}, $cp_version);
+		if (($major === 1) && ($type !== 'major')) {
+			continue;
+		}
+		if (($minor === 1) && ($type === 'patch')) {
+			continue;
+		}
+
+		$table_output[] = [
+			'version'     => $update->{'version'},
+			'package_url' => $update->{'download'},
+			'update_type' => $type,
+		];
+
+	}
+
+	// Check if the filters left no updates.
+	if (empty($table_output)) {
+		WP_CLI::success('ClassicPress is at the latest version.');
+		exit;
+	}
+
+	// Render output.
+	WP_CLI\Utils\format_items($format_fields, $table_output, $arg_fields);
+
+	// Exit to prevent the core check-update command to continue his work.
+	exit;
+}
 
 ?>
