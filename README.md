@@ -8,7 +8,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add *CP plugin compatibility* under "tools" that displays top 200 plugins from wp.org and their compatibility
 
 ### Fix wp-cli 
-* Fix `wp core check-update` (only supports --fields and --format options)
+* Fix `wp core check-update`
 
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)

@@ -21,7 +21,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 * Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
 
 **Fix wp-cli** 
-* Fix `wp core check-update` (only supports --fields and --format options)
+* Fix `wp core check-update`
 
 **Fix compatibility with plugins**
 * SEO by Rank Math (v. 1.0.30.2)
@@ -37,7 +37,7 @@ To help us know the number of active installations of this plugin, we collect an
 
 == Changelog ==
 = 0.3.0 =
-* Fix update_type output in wp-cli
+* Rewritten wp core check-update so now it's as the original
 * Removed wp plugin latestgit
 
 = 0.2.0 =
