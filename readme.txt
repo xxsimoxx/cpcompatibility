@@ -38,6 +38,7 @@ To help us know the number of active installations of this plugin, we collect an
 == Changelog ==
 = 0.3.0 =
 * Rewritten wp core check-update so now it's as the original
+* WP API is called just once when checking plugins
 * Removed wp plugin latestgit
 
 = 0.2.0 =
