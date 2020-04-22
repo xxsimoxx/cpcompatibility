@@ -3,6 +3,17 @@ if (!defined('ABSPATH')) {
 	die('uh');
 }
 
+// Fix wp-cli to have $cp_version globalized in the same way as $wp_version.
+if (defined('WP_CLI') && WP_CLI) {
+	WP_CLI::add_hook('before_wp_config_load', 'cp_globalize');
+}
+
+function cp_globalize() {
+	global $cp_version;
+	require ABSPATH.WPINC.'/version.php';
+}
+
+
 // Fix wp-cli behaviour on "core check-update".
 if (function_exists('classicpress_version') && defined('WP_CLI') && WP_CLI) {
 	// Add a hook that runs before the command.
@@ -32,7 +43,7 @@ function cp_correct_core_check_update() {
 	// Retrieve command line options.
 	if (($cp_current_pid = getmypid()) !== false && ($raw_command = file_get_contents("/proc/$cp_current_pid/cmdline")) !== false) {
 
-		$current_command = strtr (trim($raw_command, "\0"), "\0", ' ');
+		$current_command = strtr(trim($raw_command, "\0"), "\0", ' ');
 
 		$fields_match = [];
 		if (preg_match_all('/ --fields=([a-z,_]+)/', $current_command, $fields_match) > 0) {
