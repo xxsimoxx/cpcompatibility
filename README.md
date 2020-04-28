@@ -1,5 +1,5 @@
 # cpcompatibility
-This plugin is for fixing some compatibility issues for ClassicPress.
+This plugin is for fixing and alerting some compatibility issues for ClassicPress.
 
 ## Functions
 
@@ -9,6 +9,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 
 ### Fix wp-cli 
 * Fix `wp core check-update`
+* Bring in scope `$cp_version`
 
 ### Fix compatibility with plugins
 * SEO by Rank Math (v. 1.0.30.2)

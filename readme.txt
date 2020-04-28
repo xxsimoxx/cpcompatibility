@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.3.0
+Version:            0.4.0
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,11 +10,11 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.3.0/cpcompatibility-0.3.0.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.4.0/cpcompatibility-0.4.0.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin is for fixing some compatibility issues for ClassicPress.
+This plugin is for fixing and alerting some compatibility issues for ClassicPress.
 == Description ==
 **Notices on plugin compatibility**
 * Mark plugins not compatible with WP version 4.9 in plugins admin page
@@ -22,6 +22,7 @@ This plugin is for fixing some compatibility issues for ClassicPress.
 
 **Fix wp-cli** 
 * Fix `wp core check-update`
+* Bring in scope `$cp_version`
 
 **Fix compatibility with plugins**
 * SEO by Rank Math (v. 1.0.30.2)
@@ -36,6 +37,10 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 0.4.0 =
+* Bring in scope $cp_version in WP-CLI.
+* Deprecated SEO by Rank Math and Caldera Forms fixes.
+
 = 0.3.0 =
 * Rewritten wp core check-update so now it's as the original
 * WP API is called just once when checking plugins
