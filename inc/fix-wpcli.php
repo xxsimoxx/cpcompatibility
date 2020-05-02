@@ -9,6 +9,9 @@ if (defined('WP_CLI') && WP_CLI) {
 }
 
 function cp_globalize() {
+	if (isset($GLOBALS['cp_version'])) {
+		exit;
+	}
 	global $cp_version;
 	require ABSPATH.WPINC.'/version.php';
 }
