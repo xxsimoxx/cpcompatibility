@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
 	die('uh');
 }
 
-// Fix wp-cli to have $cp_version globalized in the same way as $wp_version.
+// Fix wp-cli to have $cp_version globalized.
 if (defined('WP_CLI') && WP_CLI) {
 	WP_CLI::add_hook('before_wp_config_load', 'cp_globalize');
 }
@@ -45,31 +45,28 @@ function cp_correct_core_check_update() {
 	$arg_fields = 'version,update_type,package_url';
 	$format_fields = 'table';
 
-	// Retrieve command line options.
-	if (($current_pid = getmypid()) !== false && ($raw_command = file_get_contents("/proc/$current_pid/cmdline")) !== false) {
+	// Retrieve command line options and parse them.
+	global $argv;
+	$current_command = implode(' ', $argv);
 
-		$current_command = strtr(trim($raw_command, "\0"), "\0", ' ');
-
-		$fields_match = [];
-		if (preg_match_all('/ --fields=([a-z,_]+)/', $current_command, $fields_match) > 0) {
-			$arg_fields = $fields_match[1][0];
-		}
-
-		$field_match = [];
-		if (preg_match_all('/ --field=([a-z_]+)/', $current_command, $field_match) > 0) {
-			$arg_fields = $field_match[1][0];
-		}
-
-		$cp_format_match = [];
-		if (preg_match_all('/ --format=([a-z]+)/', $current_command, $format_match) > 0) {
-			$format_fields = $format_match[1][0];
-		}
-
-		$minor = preg_match('/ --minor */', $current_command);
-
-		$major = preg_match('/ --major */', $current_command);
-
+	$fields_match = [];
+	if (preg_match_all('/ --fields=([a-z,_]+)/', $current_command, $fields_match) > 0) {
+		$arg_fields = $fields_match[1][0];
 	}
+
+	$field_match = [];
+	if (preg_match_all('/ --field=([a-z_]+)/', $current_command, $field_match) > 0) {
+		$arg_fields = $field_match[1][0];
+	}
+
+	$cp_format_match = [];
+	if (preg_match_all('/ --format=([a-z]+)/', $current_command, $format_match) > 0) {
+		$format_fields = $format_match[1][0];
+	}
+
+	$minor = preg_match('/ --minor */', $current_command);
+
+	$major = preg_match('/ --major */', $current_command);
 
 	// Put $cp_version into scope.
 	global $cp_version;
