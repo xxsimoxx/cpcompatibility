@@ -10,11 +10,13 @@ if (defined('WP_CLI') && WP_CLI) {
 
 function cp_globalize() {
 	if (isset($GLOBALS['cp_version'])) {
-		exit;
+		// It's already fixed somewhere, do nothing.
+		return;
 	}
 	global $cp_version;
 	require ABSPATH.WPINC.'/version.php';
 }
+
 
 
 // Fix wp-cli behaviour on "core check-update".
@@ -33,7 +35,7 @@ function cp_correct_core_check_update() {
 		exit;
 	}
 
-	// We are on latest. exit.
+	// We are on latest.
 	if ($core_updates[0]->{'response'} === 'latest') {
 		WP_CLI::success('ClassicPress is at the latest version.');
 		exit;
@@ -44,7 +46,7 @@ function cp_correct_core_check_update() {
 	$format_fields = 'table';
 
 	// Retrieve command line options.
-	if (($cp_current_pid = getmypid()) !== false && ($raw_command = file_get_contents("/proc/$cp_current_pid/cmdline")) !== false) {
+	if (($current_pid = getmypid()) !== false && ($raw_command = file_get_contents("/proc/$current_pid/cmdline")) !== false) {
 
 		$current_command = strtr(trim($raw_command, "\0"), "\0", ' ');
 
