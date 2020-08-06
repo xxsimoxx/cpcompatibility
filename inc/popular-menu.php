@@ -76,7 +76,12 @@ class CPC_List_Table extends \WP_List_Table {
 		if (preg_match('/^5/', $item['minimum'])) {
 			$class = 'cpc-bad-news';
 		}
-		$name = '<span class="row-title '.$class.'"><a href="'.$item['link'].'" target="_blank">'.$item['name'].'</a> v. '.$item['version'].'</span>';
+
+		if ($item['link'] !== '') {
+			$name = '<span class="row-title '.$class.'"><a href="'.$item['link'].'" target="_blank">'.$item['name'].'</a> v. '.$item['version'].'</span>';
+		} else {
+			$name = '<span class="row-title '.$class.'">'.$item['name'].' v. '.$item['version'].'</span>';
+		}
 		return sprintf('%1$s', $name);
 	}
 
