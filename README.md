@@ -9,11 +9,6 @@ This plugin is for fixing and alerting some compatibility issues for ClassicPres
 
 ### Fix wp-cli 
 * Fix `wp core check-update`
-* Bring in scope `$cp_version`
-
-### Fix compatibility with plugins
-* SEO by Rank Math (v. 1.0.30.2)
-* Caldera Forms > 1.8.4
 
 ## Screenshots
 ![plugin page](images/screenshot-1.jpg)

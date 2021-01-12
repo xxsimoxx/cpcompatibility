@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.5.1
+Version:            0.6.0
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,7 +10,7 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.5.1/cpcompatibility-0.5.1.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.6.0/cpcompatibility-0.6.0.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,12 +22,6 @@ This plugin is for fixing and alerting some compatibility issues for ClassicPres
 
 **Fix wp-cli** 
 * Fix `wp core check-update`
-* Bring in scope `$cp_version`
-
-**Fix compatibility with plugins**
-* SEO by Rank Math (v. 1.0.30.2)
-* Caldera Forms > 1.8.4
-
 
 To help us know the number of active installations of this plugin, we collect and store anonymized data when the plugin check in for updates. The date and unique plugin identifier are stored as plain text and the requesting URL is stored as a non-reversible hashed value. This data is stored for up to 28 days.
 
@@ -37,6 +31,10 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 0.6.0 =
+* Removed compatibility hacks for plugins deprecated in v. 0.4.0.
+* Recoded change_menu_page.php
+
 = 0.5.1 =
 * Don't link plugin without link.
 
