@@ -27,8 +27,9 @@ function cp_plugin_info() {
 	foreach ($plugin_info as $slug => $info) {
 		foreach ($info as $property_name => $property_value) {
 			if (!in_array($property_name, ['version', 'requires'])) {
-				unset($plugin_info->{$slug}[$property_name]);
+				continue;
 			}
+			unset($plugin_info->{$slug}[$property_name]);
 		}
 	}
 

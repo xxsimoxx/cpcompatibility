@@ -16,7 +16,7 @@ class CPC_List_Table extends \WP_List_Table {
 
 	// Output columns definition.
 	function get_columns() {
-		$columns = [
+		return [
 			'compatible' => esc_html__('Compatible', 'cpc'),
 			'name'       => esc_html__('Name', 'cpc'),
 			'version'    => 'version',
@@ -24,27 +24,24 @@ class CPC_List_Table extends \WP_List_Table {
 			'minimum'    => esc_html__('Minimum required WP version', 'cpc'),
 			'downloaded' => esc_html__('Downloaded', 'cpc'),
 		];
-		return $columns;
 	}
 
 	// Output hidden columns.
 	function get_hidden_columns() {
-		$hidden_columns = [
+		return [
 			'version',
 			'link',
 		];
-		return $hidden_columns;
 	}
 
 	// Output sortable columns.
 	function get_sortable_columns() {
-		$sortable_columns = [
+		return [
 			'compatible'  => ['compatible', false],
 			'name'        => ['name',       false],
 			'downloaded'  => ['downloaded', false],
 			'minimum'     => ['minimum',    false],
 		];
-		return $sortable_columns;
 	}
 
 	// Callable to be used with usort.
@@ -176,9 +173,10 @@ function CPplugincheck_create_submenu() {
 
 add_action('admin_enqueue_scripts', 'cpc_wp_admin_style');
 function cpc_wp_admin_style($hook) {
-	if ($hook === 'tools_page_cpcompatibility') {
-		wp_enqueue_style('cpcompatibility_css', plugins_url('../css/cpcompatibility.css', __FILE__));
+	if ($hook !== 'tools_page_cpcompatibility') {
+		return;
 	}
+	wp_enqueue_style('cpcompatibility_css', plugins_url('../css/cpcompatibility.css', __FILE__));
 }
 
 function CPplugincheck_page() {
