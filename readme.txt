@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.6.0
+Version:            0.7.0
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,7 +10,7 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.6.0/cpcompatibility-0.6.0.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.7.0/cpcompatibility-0.7.0.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,19 +31,23 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 0.7.0 =
+* Don't show warning if plugin version is bumped
+* Code restyling
+
 = 0.6.0 =
-* Removed compatibility hacks for plugins deprecated in v. 0.4.0.
+* Removed compatibility hacks for plugins deprecated in v. 0.4.0
 * Recoded change_menu_page.php
 
 = 0.5.1 =
-* Don't link plugin without link.
+* Don't link plugin without link
 
 = 0.5.0 =
-* Properly read options for wp core check updates fix.
+* Properly read options for wp core check updates fix
 
 = 0.4.0 =
-* Bring in scope $cp_version in WP-CLI.
-* Deprecated SEO by Rank Math and Caldera Forms fixes.
+* Bring in scope $cp_version in WP-CLI
+* Deprecated SEO by Rank Math and Caldera Forms fixes
 
 = 0.3.0 =
 * Rewritten wp core check-update so now it's as the original

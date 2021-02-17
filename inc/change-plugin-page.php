@@ -26,7 +26,7 @@ function cp_plugin_info() {
 
 	foreach ($plugin_info as $slug => $info) {
 		foreach ($info as $property_name => $property_value) {
-			if (!in_array($property_name, ['version', 'requires'])) {
+			if (in_array($property_name, ['version', 'requires'])) {
 				continue;
 			}
 			unset($plugin_info->{$slug}[$property_name]);
@@ -39,16 +39,31 @@ function cp_plugin_info() {
 }
 
 add_filter('plugin_row_meta', 'cp_plugin_row_meta', 10, 2);
+
 function cp_plugin_row_meta($links, $file) {
+
 	$slug = dirname($file);
 	$plugin_info = cp_plugin_info();
+
 	if ($plugin_info === false) {
 		return $links;
 	}
-	if (isset($plugin_info->{$slug}['version']) && version_compare($plugin_info->{$slug}['requires'], '5', '>=')) {
-		/* translators: %1$s: WP version required, %2$s: plugin version. */
-		array_push($links, '<span class="dashicons-before dashicons-warning">'.sprintf (__('Requires WordPress %1$s for version %2$s.<br>', 'cpc'), $plugin_info->{$slug}['requires'], $plugin_info->{$slug}['version']).'</span>');
+
+	if (!isset($plugin_info->{$slug}['version'])) {
+		return $links;
 	}
+
+	if (version_compare($plugin_info->{$slug}['requires'], '5', '<')) {
+		return $links;
+	}
+
+	// Check if a plugin is bumped to 999 or alike.
+	$plugindata = get_plugin_data(WP_PLUGIN_DIR.'/'.$file, false, false);
+	if (version_compare($plugin_info->{$slug}['requires'], $plugindata['Version'], '<')) {
+		return $links;
+	}
+
+	array_push($links, '<span class="dashicons-before dashicons-warning">'.sprintf (__('Requires WordPress %1$s for version %2$s.<br>', 'cpc'), $plugin_info->{$slug}['requires'], $plugin_info->{$slug}['version']).'</span>');
 	return $links;
 }
 
