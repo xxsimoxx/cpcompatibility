@@ -59,7 +59,7 @@ function cp_plugin_row_meta($links, $file) {
 
 	// Check if a plugin is bumped to 999 or alike.
 	$plugindata = get_plugin_data(WP_PLUGIN_DIR.'/'.$file, false, false);
-	if (version_compare($plugin_info->{$slug}['requires'], $plugindata['Version'], '<')) {
+	if (version_compare($plugindata['Version'], $plugin_info->{$slug}['version'], '>')) {
 		return $links;
 	}
 
