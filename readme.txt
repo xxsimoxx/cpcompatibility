@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.7.0
+Version:            0.7.1
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,11 +10,11 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.7.0/cpcompatibility-0.7.0.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.7.1/cpcompatibility-0.7.1.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
-This plugin is for fixing and alerting some compatibility issues for ClassicPress.
+This plugin is for fixing WPCLI and alerting some compatibility issues for ClassicPress.
 == Description ==
 **Notices on plugin compatibility**
 * Mark plugins not compatible with WP version 4.9 in plugins admin page
@@ -31,6 +31,9 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 0.7.1 =
+* Removed unused lodash lib.
+
 = 0.7.0 =
 * Don't show warning if plugin version is bumped
 * Code restyling

@@ -1,5 +1,5 @@
 # cpcompatibility
-This plugin is for fixing and alerting some compatibility issues for ClassicPress.
+This plugin is for fixing WPCLI and alerting some compatibility issues for ClassicPress.
 
 ## Functions
 
