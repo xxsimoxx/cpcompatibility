@@ -52,7 +52,7 @@ class CPCompatibilityNotice {
 		}
 
 		// Save transient...
-		set_transient('cpc_plugin_info', $plugin_info, 6 * HOUR_IN_SECONDS);
+		set_transient('cpc_plugin_info', $plugin_info, apply_filters('cpc_plugin_info_life', 6 * HOUR_IN_SECONDS));
 		// and keep in memory.
 		$this->plugin_info_cache = $plugin_info;
 
