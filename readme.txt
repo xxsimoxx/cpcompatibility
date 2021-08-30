@@ -1,7 +1,7 @@
 === cpcompatibility ===
 Plugin Name:        CPcompatibility
 Description:        Tweaks for working with CP: wpcli compatibility, plugin checks.
-Version:            0.7.1
+Version:            0.7.2
 Text Domain:        cpc
 Domain Path:        /languages
 Requires PHP:       5.6
@@ -10,7 +10,7 @@ Tested:             4.9.99
 Author:             Gieffe edizioni
 Author URI:         https://www.gieffeedizioni.it
 Plugin URI:         https://software.gieffeedizioni.it
-Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.7.1/cpcompatibility-0.7.1.zip
+Download link:      https://github.com/xxsimoxx/cpcompatibility/releases/download/v0.7.2/cpcompatibility-0.7.2.zip
 License:            GPLv2
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 0.7.2 =
+* Speed up plugin notices.
+
 = 0.7.1 =
 * Removed unused lodash lib.
 
