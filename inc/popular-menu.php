@@ -59,7 +59,9 @@ class CPC_List_Table extends \WP_List_Table {
 		} else {
 			$result = strcasecmp($a[$orderby], $b[$orderby]);
 		}
-
+		if ($result == 0) {
+			$result = $a['downloaded'] - $b['downloaded'];
+		}
 		return ( $order === 'asc' ) ? $result : -$result;
 	}
 
@@ -97,30 +99,33 @@ class CPC_List_Table extends \WP_List_Table {
 			return $saved;
 		}
 		include_once(ABSPATH.'wp-admin/includes/plugin-install.php');
-		$call_api = plugins_api('query_plugins', [
-				'browse'   => 'popular',
-				'page'     => 1,
-				'per_page' => 1000,
-				'fields'   => [
-					'downloaded'        => true,
-					'rating'            => false,
-					'description'       => false,
-					'short_description' => false,
-					'donate_link'       => false,
-					'tags'              => false,
-					'sections'          => false,
-					'homepage'          => true,
-					'added'             => false,
-					'last_updated'      => false,
-					'compatibility'     => false,
-					'tested'            => false,
-					'requires'          => true,
-					'downloadlink'      => true,
-				],
-			]
-		);
-
-		$list = $call_api->{'plugins'};
+		$iterations = apply_filters('cpc_popular_plugin_iterations', 2);
+		$list = [];
+		for ($i = 1; $i <= $iterations; $i++) {
+			$call_api = plugins_api('query_plugins', [
+					'browse'   => 'popular',
+					'page'     => $i,
+					'per_page' => 250,
+					'fields'   => [
+						'downloaded'        => true,
+						'rating'            => false,
+						'description'       => false,
+						'short_description' => false,
+						'donate_link'       => false,
+						'tags'              => false,
+						'sections'          => false,
+						'homepage'          => true,
+						'added'             => false,
+						'last_updated'      => false,
+						'compatibility'     => false,
+						'tested'            => false,
+						'requires'          => true,
+						'downloadlink'      => true,
+					],
+				]
+			);
+			$list = array_merge($list, $call_api->{'plugins'});
+		}
 
 		$data = [];
 		foreach ($list as $plugin) {
@@ -134,7 +139,7 @@ class CPC_List_Table extends \WP_List_Table {
 			];
 		}
 
-		set_transient('cpc_popular', $data, 900);
+		set_transient('cpc_popular', $data, 3600);
 		return $data;
 
 	}
