@@ -173,18 +173,10 @@ class CPC_List_Table extends \WP_List_Table {
 add_action('admin_menu', 'CPplugincheck_create_submenu');
 function CPplugincheck_create_submenu() {
 	$cpc_page_name = __('CP plugin compatibility', 'cpc');
-	$cpc_page = add_submenu_page('tools.php', $cpc_page_name, $cpc_page_name, 'manage_options', 'cpcompatibility', 'CPplugincheck_page');
+	$cpc_page = add_submenu_page('tools.php', $cpc_page_name, $cpc_page_name, 'manage_options', 'cpcompatibility', 'cpc_popular_plugin_page');
 }
 
-add_action('admin_enqueue_scripts', 'cpc_wp_admin_style');
-function cpc_wp_admin_style($hook) {
-	if ($hook !== 'tools_page_cpcompatibility') {
-		return;
-	}
-	wp_enqueue_style('cpcompatibility_css', plugins_url('../css/cpcompatibility.css', __FILE__));
-}
-
-function CPplugincheck_page() {
+function cpc_popular_plugin_page() {
 	echo '<div class="wrap">';
 	echo '<h1>'.__('CPcompatibility', 'cpc').'</h1>';
 	echo '<h2>'.__('Most popular plugins from WordPress.org', 'cpc').'</h2>';
@@ -194,6 +186,14 @@ function CPplugincheck_page() {
 	$CPCListTable->display();
 
 	echo '</div>';
+}
+
+add_action('admin_enqueue_scripts', 'cpc_wp_admin_style');
+function cpc_wp_admin_style($hook) {
+	if ($hook !== 'tools_page_cpcompatibility') {
+		return;
+	}
+	wp_enqueue_style('cpcompatibility_css', plugins_url('../css/cpcompatibility.css', __FILE__));
 }
 
 
