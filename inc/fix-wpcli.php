@@ -5,10 +5,10 @@ if (!defined('ABSPATH')) {
 
 // Fix wp-cli to have $cp_version globalized.
 if (defined('WP_CLI') && WP_CLI) {
-	WP_CLI::add_hook('before_wp_config_load', 'cp_globalize');
+	WP_CLI::add_hook('before_wp_config_load', 'cpc_globalize');
 }
 
-function cp_globalize() {
+function cpc_globalize() {
 	if (isset($GLOBALS['cp_version'])) {
 		// It's already fixed somewhere, do nothing.
 		return;
@@ -23,10 +23,10 @@ function cp_globalize() {
 if (function_exists('classicpress_version') && defined('WP_CLI') && WP_CLI) {
 	// Add a hook that runs before the command.
 	// This function must exit so the real "core check-update" is not run,
-	WP_CLI::add_hook('before_invoke:core check-update', 'cp_correct_core_check_update');
+	WP_CLI::add_hook('before_invoke:core check-update', 'cpc_correct_core_check_update');
 }
 
-function cp_correct_core_check_update() {
+function cpc_correct_core_check_update() {
 
 	// Check for updates. Bail on error.
 	// When playing with versions, an empty array is returned if it's not on api.

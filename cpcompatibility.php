@@ -57,8 +57,8 @@ function cpc_load_textdomain() {
  *
  */
 
-add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'cpcompatibility_pal');
-function cpcompatibility_pal($links) {
+add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'cpc_pal');
+function cpc_pal($links) {
 	if (!function_exists('classicpress_version') || version_compare('1.1.0', classicpress_version(), '>')) {
 		// ensure icon is displayed on CP < 1.1.0
 		$link = '<a href="'.admin_url('tools.php?page=cpcompatibility').'" title="'.__('CP plugin compatibility', 'cpc').'"><i style="font: 16px dashicons; vertical-align: text-bottom;" class="dashicon dashicons-chart-bar"></i></a>';
