@@ -59,7 +59,7 @@ class CPC_List_Table extends \WP_List_Table {
 		} else {
 			$result = strcasecmp($a[$orderby], $b[$orderby]);
 		}
-		if ($result == 0) {
+		if ($result === 0) {
 			$result = $a['downloaded'] - $b['downloaded'];
 		}
 		return ( $order === 'asc' ) ? $result : -$result;
