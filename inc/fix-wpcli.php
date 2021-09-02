@@ -71,13 +71,6 @@ function cp_correct_core_check_update() {
 	// Put $cp_version into scope.
 	global $cp_version;
 
-	/*
-	// Tests for multiple response.
-	$core_updates[1]->{'version'} = '1.0.1';
-	$core_updates[2]->{'version'} = '1.1.0';
-	$core_updates[3]->{'version'} = '9.0.0';
-	*/
-
 	// Prepare output array.
 	$table_output = [];
 
