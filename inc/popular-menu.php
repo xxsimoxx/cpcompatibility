@@ -170,8 +170,8 @@ class CPC_List_Table extends \WP_List_Table {
 }
 
 
-add_action('admin_menu', 'CPplugincheck_create_submenu');
-function CPplugincheck_create_submenu() {
+add_action('admin_menu', 'cpc_popular_submenu');
+function cpc_popular_submenu() {
 	$cpc_page_name = __('CP plugin compatibility', 'cpc');
 	$cpc_page = add_submenu_page('tools.php', $cpc_page_name, $cpc_page_name, 'manage_options', 'cpcompatibility', 'cpc_popular_plugin_page');
 }
