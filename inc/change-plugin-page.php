@@ -8,7 +8,7 @@ class CPCompatibilityNotice {
 	private $plugin_info_cache = false;
 
 	public function __construct() {
-		add_filter('plugin_row_meta', [$this, 'plugin_row_meta'], 10, 2);
+		add_filter('plugin_row_meta', [$this, 'plugin_row_meta'], 100, 2);
 	}
 
 	private function get_plugin_info() {
@@ -83,7 +83,8 @@ class CPCompatibilityNotice {
 		}
 
 		// Add the notice
-		array_push($links, '<span class="dashicons-before dashicons-warning">'.sprintf (__('Requires WordPress %1$s for version %2$s.<br>', 'cpc'), $plugin_info->{$slug}['requires'], $plugin_info->{$slug}['version']).'</span>');
+		// Translators: %1$s is the WordPress version required. %2$s Is the plugin version requiring WordPress X.
+		array_push($links, '<span class="dashicons-before dashicons-warning">'.sprintf (__('Requires WordPress %1$s for version %2$s', 'cpc'), $plugin_info->{$slug}['requires'], $plugin_info->{$slug}['version']).'</span>');
 		return $links;
 	}
 

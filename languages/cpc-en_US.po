@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CPcompatibility 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
-"POT-Creation-Date: 2020-04-17T08:58:57+00:00\n"
+"POT-Creation-Date: 2021-09-07T13:53:53+00:00\n"
 "PO-Revision-Date: 2019-09-05 13:45+0200\n"
 "Last-Translator: root <simone@gieffeedizioni.it>\n"
 "Language-Team: Italian\n"
@@ -16,16 +16,17 @@ msgstr ""
 "X-Domain: cpc\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: inc/popular-menu.php:84
+#: inc/popular-menu.php:88
 msgctxt "thousands separator"
 msgid ","
 msgstr ""
 
-#: cpcompatibility.php:78 cpcompatibility.php:80 inc/popular-menu.php:168
+#: cpcompatibility.php:64 cpcompatibility.php:66 inc/popular-menu.php:175
 msgid "CP plugin compatibility"
 msgstr ""
 
 #. Plugin Name of the plugin
+#: inc/popular-menu.php:181
 msgid "CPcompatibility"
 msgstr ""
 
@@ -37,10 +38,6 @@ msgstr ""
 msgid "Downloaded"
 msgstr ""
 
-#: inc/change-plugin-page.php:15
-msgid "Fixed by cpcompatibility"
-msgstr ""
-
 #. Author of the plugin
 msgid "Gieffe edizioni srl"
 msgstr ""
@@ -49,7 +46,7 @@ msgstr ""
 msgid "Minimum required WP version"
 msgstr ""
 
-#: inc/popular-menu.php:181
+#: inc/popular-menu.php:182
 msgid "Most popular plugins from WordPress.org"
 msgstr ""
 
@@ -57,9 +54,9 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#. translators: %1$s: WP version required, %2$s: plugin version.
-#: inc/change-plugin-page.php:23
-msgid "Requires WordPress %1$s for version %2$s.<br>"
+#. Translators: %1$s is the WordPress version required. %2$s Is the plugin version requiring WordPress X.
+#: inc/change-plugin-page.php:87
+msgid "Requires WordPress %1$s for version %2$s"
 msgstr ""
 
 #. Description of the plugin
