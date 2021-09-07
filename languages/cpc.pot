@@ -1,20 +1,21 @@
-# Copyright (C) 2020 Gieffe edizioni srl
-# This file is distributed under the same license as the CPcompatibility plugin.
+# Copyright (C) 2021 Gieffe edizioni srl
+# This file is distributed under the GPL2.
 msgid ""
 msgstr ""
-"Project-Id-Version: CPcompatibility 0.2.0\n"
+"Project-Id-Version: CPcompatibility 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cpcompatibility\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-04-17T08:58:57+00:00\n"
+"POT-Creation-Date: 2021-09-07T13:47:39+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: cpc\n"
 
 #. Plugin Name of the plugin
+#: inc/popular-menu.php:181
 msgid "CPcompatibility"
 msgstr ""
 
@@ -34,18 +35,13 @@ msgstr ""
 msgid "https://www.gieffeedizioni.it/classicpress"
 msgstr ""
 
-#: cpcompatibility.php:78
-#: cpcompatibility.php:80
-#: inc/popular-menu.php:168
+#: cpcompatibility.php:64
+#: cpcompatibility.php:66
+#: inc/popular-menu.php:175
 msgid "CP plugin compatibility"
 msgstr ""
 
-#: inc/change-plugin-page.php:15
-msgid "Fixed by cpcompatibility"
-msgstr ""
-
-#. translators: %1$s: WP version required, %2$s: plugin version.
-#: inc/change-plugin-page.php:23
+#: inc/change-plugin-page.php:86
 msgid "Requires WordPress %1$s for version %2$s.<br>"
 msgstr ""
 
@@ -65,11 +61,11 @@ msgstr ""
 msgid "Downloaded"
 msgstr ""
 
-#: inc/popular-menu.php:84
+#: inc/popular-menu.php:88
 msgctxt "thousands separator"
 msgid ","
 msgstr ""
 
-#: inc/popular-menu.php:181
+#: inc/popular-menu.php:182
 msgid "Most popular plugins from WordPress.org"
 msgstr ""
