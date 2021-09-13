@@ -18,7 +18,7 @@ This plugin is for fixing WPCLI and alerting some compatibility issues for Class
 == Description ==
 **Notices on plugin compatibility**
 * Mark plugins not compatible with WP version 4.9 in plugins admin page
-* Add a menu under "tools" that displays top 200 plugins from wp.org and their compatibility
+* Add a menu under "tools" that displays top 500 plugins from wp.org and their compatibility
 
 **Fix wp-cli** 
 * Fix `wp core check-update`
@@ -31,6 +31,10 @@ To help us know the number of active installations of this plugin, we collect an
 2. Most popular plugins and their compatibility
 
 == Changelog ==
+= 1.0.0 =
+* Now loads 500 (was 200) popular plugins
+* code cleanup
+
 = 0.7.2 =
 * Speed up plugin notices.
 
