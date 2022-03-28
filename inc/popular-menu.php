@@ -99,13 +99,13 @@ class CPC_List_Table extends \WP_List_Table {
 			return $saved;
 		}
 		include_once(ABSPATH.'wp-admin/includes/plugin-install.php');
-		$iterations = apply_filters('cpc_popular_plugin_iterations', 2);
+		$iterations = apply_filters('cpc_popular_plugin_API_iterations', 2);
 		$list = [];
 		for ($i = 1; $i <= $iterations; $i++) {
 			$call_api = plugins_api('query_plugins', [
 					'browse'   => 'popular',
 					'page'     => $i,
-					'per_page' => 250,
+					'per_page' => apply_filters('cpc_popular_plugin_API_per_page', 250),
 					'fields'   => [
 						'downloaded'        => true,
 						'rating'            => false,
@@ -155,7 +155,15 @@ class CPC_List_Table extends \WP_List_Table {
 		$alldata = $this->load_data();
 		usort($alldata, [&$this, 'reorder']);
 
-		$per_page = 10;
+		if (isset($_GET['s'])) {
+			foreach ($alldata as $key => &$value) {
+				if (strpos(strtoupper($value['name']), strtoupper($_GET['s'])) === false) {  //phpcs:ignore SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
+					unset($alldata[$key]);
+				}
+			}
+		}
+
+		$per_page = apply_filters('cpc_popular_plugin_per_page', 10);
 		$total_items = count($alldata);
 		$current_page = $this->get_pagenum();
 
@@ -169,8 +177,8 @@ class CPC_List_Table extends \WP_List_Table {
 
 }
 
-
 add_action('admin_menu', 'cpc_popular_submenu');
+
 function cpc_popular_submenu() {
 	$cpc_page_name = __('CP plugin compatibility', 'cpc');
 	$cpc_page = add_submenu_page('tools.php', $cpc_page_name, $cpc_page_name, 'manage_options', 'cpcompatibility', 'cpc_popular_plugin_page');
@@ -180,11 +188,13 @@ function cpc_popular_plugin_page() {
 	echo '<div class="wrap">';
 	echo '<h1>'.__('CPcompatibility', 'cpc').'</h1>';
 	echo '<h2>'.__('Most popular plugins from WordPress.org', 'cpc').'</h2>';
-
 	$CPCListTable = new CPC_List_Table();
 	$CPCListTable->prepare_items();
+	echo '<form method="get">';
+	echo '<input type="hidden" name="page" value="cpcompatibility" />';
+	$CPCListTable->search_box(__('Search'), 'name');
+	echo '</form>';
 	$CPCListTable->display();
-
 	echo '</div>';
 }
 
