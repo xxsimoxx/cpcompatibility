@@ -144,6 +144,7 @@ class CPC_List_Table extends \WP_List_Table {
 
 	}
 
+
 	// Prepare our columns and insert data.
 	function prepare_items() {
 
@@ -163,7 +164,7 @@ class CPC_List_Table extends \WP_List_Table {
 			}
 		}
 
-		$per_page = apply_filters('cpc_popular_plugin_per_page', 10);
+		$per_page = cpc_popular_per_page();
 		$total_items = count($alldata);
 		$current_page = $this->get_pagenum();
 
@@ -177,8 +178,15 @@ class CPC_List_Table extends \WP_List_Table {
 
 }
 
-add_action('admin_menu', 'cpc_popular_submenu');
+function cpc_popular_per_page() {
+	$user_meta = get_user_meta(get_current_user_id(), 'cpc_popular_per_page');
+	if (isset($user_meta[0])) {
+		return $user_meta[0];
+	}
+	return apply_filters('cpc_popular_plugin_per_page', 10);
+}
 
+add_action('admin_menu', 'cpc_popular_submenu');
 function cpc_popular_submenu() {
 	$cpc_page_name = __('CP plugin compatibility', 'cpc');
 	$cpc_page = add_submenu_page('tools.php', $cpc_page_name, $cpc_page_name, 'manage_options', 'cpcompatibility', 'cpc_popular_plugin_page');
@@ -197,6 +205,24 @@ function cpc_popular_plugin_page() {
 	$CPCListTable->display();
 	echo '</div>';
 }
+
+add_action('load-tools_page_cpcompatibility', 'cpc_screen_options');
+function cpc_screen_options() {
+	$options = [
+		'label' => __('Number of items per page:'),
+		'default' => apply_filters('cpc_popular_plugin_per_page', 10);
+		'option' => 'cpc_popular_per_page',
+	];
+	add_screen_option('per_page', $options);
+}
+
+add_filter('set-screen-option', 'cpc_set_screen_option', 10, 3);
+function cpc_set_screen_option($status, $option, $value) {
+	if ($option === 'cpc_popular_per_page') {
+		return $value;
+	}
+}
+
 
 add_action('admin_enqueue_scripts', 'cpc_wp_admin_style');
 function cpc_wp_admin_style($hook) {
