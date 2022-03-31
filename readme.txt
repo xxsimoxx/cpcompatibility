@@ -34,6 +34,7 @@ To help us know the number of active installations of this plugin, we collect an
 = 1.1.0 =
 * Now loads 500 (was 200) popular plugins configurable via filters
 * Search box
+* Pagination in screen options
 
 = 1.0.0 =
 * Now loads 500 (was 200) popular plugins
