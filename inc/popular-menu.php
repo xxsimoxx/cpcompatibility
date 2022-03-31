@@ -209,9 +209,9 @@ function cpc_popular_plugin_page() {
 add_action('load-tools_page_cpcompatibility', 'cpc_screen_options');
 function cpc_screen_options() {
 	$options = [
-		'label' => __('Number of items per page:'),
-		'default' => apply_filters('cpc_popular_plugin_per_page', 10);
-		'option' => 'cpc_popular_per_page',
+		'label'		=> __('Number of items per page:'),
+		'default'	=> apply_filters('cpc_popular_plugin_per_page', 10),
+		'option'	=> 'cpc_popular_per_page',
 	];
 	add_screen_option('per_page', $options);
 }
