@@ -156,7 +156,7 @@ class CPC_List_Table extends \WP_List_Table {
 		$alldata = $this->load_data();
 		usort($alldata, [&$this, 'reorder']);
 
-		if (isset($_GET['s'])) {
+		if (isset($_GET['s']) && $_GET['s'] !== '') {
 			foreach ($alldata as $key => &$value) {
 				if (strpos(strtoupper($value['name']), strtoupper($_GET['s'])) === false) {  //phpcs:ignore SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
 					unset($alldata[$key]);
