@@ -103,27 +103,27 @@ class CPC_List_Table extends \WP_List_Table {
 		$iterations = apply_filters('cpc_popular_plugin_API_iterations', 2);
 		$list = [];
 		for ($i = 1; $i <= $iterations; $i++) {
-		$call_api = plugins_api('query_plugins', [
-			'browse'   => 'popular',
-			'page'     => $i,
-			'per_page' => apply_filters('cpc_popular_plugin_API_per_page', 250),
-			'fields'   => [
-				'downloaded'        => true,
-				'rating'            => false,
-				'description'       => false,
-				'short_description' => false,
-				'donate_link'       => false,
-				'tags'              => false,
-				'sections'          => false,
-				'homepage'          => true,
-				'added'             => false,
-				'last_updated'      => false,
-				'compatibility'     => false,
-				'tested'            => false,
-				'requires'          => true,
-				'downloadlink'      => true,
-			],
-		],
+			$call_api = plugins_api('query_plugins', [
+				'browse'   => 'popular',
+				'page'     => $i,
+				'per_page' => apply_filters('cpc_popular_plugin_API_per_page', 250),
+				'fields'   => [
+					'downloaded'        => true,
+					'rating'            => false,
+					'description'       => false,
+					'short_description' => false,
+					'donate_link'       => false,
+					'tags'              => false,
+					'sections'          => false,
+					'homepage'          => true,
+					'added'             => false,
+					'last_updated'      => false,
+					'compatibility'     => false,
+					'tested'            => false,
+					'requires'          => true,
+					'downloadlink'      => true,
+				],
+		]
 		);
 			$list = array_merge($list, $call_api->{'plugins'});
 		}
