@@ -32,7 +32,7 @@ class CPCompatibilityNotice {
 
 		// Run a query to get informations
 		include_once (ABSPATH.'wp-admin/includes/plugin-install.php');
-		$query = ['slugs'  => $slugs];
+		$query = ['slugs' => $slugs];
 		if (is_wp_error($plugin_info = plugins_api('plugin_information', $query))) {
 			return false;
 		}

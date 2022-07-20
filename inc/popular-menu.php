@@ -46,10 +46,11 @@ class CPC_List_Table extends \WP_List_Table {
 
 	// Callable to be used with usort.
 	function reorder($a, $b) {
+		// Sanifications etc are done manually
 		// If no orderby or wrong orderby, default to plugin or theme name.
-		$orderby = (!empty($_GET['orderby']) && in_array($_GET['orderby'], ['name', 'downloaded', 'minimum', 'compatible'], true)) ? $_GET['orderby'] : 'downloaded';
+		$orderby = (!empty($_GET['orderby']) && in_array($_GET['orderby'], ['name', 'downloaded', 'minimum', 'compatible'], true)) ? $_GET['orderby'] : 'downloaded'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash,WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		// If no order or wrong order, default to asc.
-		$order = (!empty($_GET['order']) && $_GET['order'] !== 'desc') ? 'asc' : 'desc';
+		$order = (!empty($_GET['order']) && $_GET['order'] !== 'desc') ? 'asc' : 'desc'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 
 		// Properly order numeric values or reorder text case-insensitive.
 		if ($orderby === 'downloaded') {
@@ -102,28 +103,28 @@ class CPC_List_Table extends \WP_List_Table {
 		$iterations = apply_filters('cpc_popular_plugin_API_iterations', 2);
 		$list = [];
 		for ($i = 1; $i <= $iterations; $i++) {
-			$call_api = plugins_api('query_plugins', [
-					'browse'   => 'popular',
-					'page'     => $i,
-					'per_page' => apply_filters('cpc_popular_plugin_API_per_page', 250),
-					'fields'   => [
-						'downloaded'        => true,
-						'rating'            => false,
-						'description'       => false,
-						'short_description' => false,
-						'donate_link'       => false,
-						'tags'              => false,
-						'sections'          => false,
-						'homepage'          => true,
-						'added'             => false,
-						'last_updated'      => false,
-						'compatibility'     => false,
-						'tested'            => false,
-						'requires'          => true,
-						'downloadlink'      => true,
-					],
-				]
-			);
+		$call_api = plugins_api('query_plugins', [
+			'browse'   => 'popular',
+			'page'     => $i,
+			'per_page' => apply_filters('cpc_popular_plugin_API_per_page', 250),
+			'fields'   => [
+				'downloaded'        => true,
+				'rating'            => false,
+				'description'       => false,
+				'short_description' => false,
+				'donate_link'       => false,
+				'tags'              => false,
+				'sections'          => false,
+				'homepage'          => true,
+				'added'             => false,
+				'last_updated'      => false,
+				'compatibility'     => false,
+				'tested'            => false,
+				'requires'          => true,
+				'downloadlink'      => true,
+			],
+		],
+		);
 			$list = array_merge($list, $call_api->{'plugins'});
 		}
 
@@ -156,9 +157,9 @@ class CPC_List_Table extends \WP_List_Table {
 		$alldata = $this->load_data();
 		usort($alldata, [&$this, 'reorder']);
 
-		if (isset($_GET['s']) && $_GET['s'] !== '') {
+		if (isset($_GET['s']) && $_GET['s'] !== '') { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			foreach ($alldata as $key => &$value) {
-				if (strpos(strtoupper($value['name']), strtoupper($_GET['s'])) === false) {  //phpcs:ignore SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed
+				if (strpos(strtoupper($value['name']), strtoupper(sanitize_text_field(wp_unslash($_GET['s'])))) === false) {  //phpcs:ignore SlevomatCodingStandard.ControlStructures.EarlyExit.EarlyExitNotUsed,WordPress.Security.NonceVerification.Recommended
 					unset($alldata[$key]);
 				}
 			}
@@ -170,7 +171,7 @@ class CPC_List_Table extends \WP_List_Table {
 
 		$this->set_pagination_args( [
 			'total_items' => $total_items,
-			'per_page'    => $per_page ,
+			'per_page'    => $per_page,
 		]);
 
 		$this->items = array_slice($alldata, (($current_page - 1) * $per_page), $per_page);
@@ -194,13 +195,13 @@ function cpc_popular_submenu() {
 
 function cpc_popular_plugin_page() {
 	echo '<div class="wrap">';
-	echo '<h1>'.__('CPcompatibility', 'cpc').'</h1>';
-	echo '<h2>'.__('Most popular plugins from WordPress.org', 'cpc').'</h2>';
+	echo '<h1>'.esc_html__('CPcompatibility', 'cpc').'</h1>';
+	echo '<h2>'.esc_html__('Most popular plugins from WordPress.org', 'cpc').'</h2>';
 	$CPCListTable = new CPC_List_Table();
 	$CPCListTable->prepare_items();
 	echo '<form method="get">';
 	echo '<input type="hidden" name="page" value="cpcompatibility" />';
-	$CPCListTable->search_box(__('Search'), 'name');
+	$CPCListTable->search_box(__('Search'), 'name'); // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
 	echo '</form>';
 	$CPCListTable->display();
 	echo '</div>';
@@ -209,7 +210,7 @@ function cpc_popular_plugin_page() {
 add_action('load-tools_page_cpcompatibility', 'cpc_screen_options');
 function cpc_screen_options() {
 	$options = [
-		'label'		=> __('Number of items per page:'),
+		'label'		=> __('Number of items per page:'),  // phpcs:ignore WordPress.WP.I18n.MissingArgDomain
 		'default'	=> apply_filters('cpc_popular_plugin_per_page', 10),
 		'option'	=> 'cpc_popular_per_page',
 	];
