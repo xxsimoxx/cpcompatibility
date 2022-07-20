@@ -28,7 +28,9 @@ require_once 'inc/UpdateClient.class.php';
  * Here we fix wp-cli
  *
  */
-require 'inc/fix-wpcli.php';
+if (!file_exists(ABSPATH . WPINC . '/class-fix-wpcli.php')) {
+	require 'inc/fix-wpcli.php';
+}
 
 /**
  *
