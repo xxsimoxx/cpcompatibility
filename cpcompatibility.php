@@ -3,7 +3,9 @@
  * Plugin Name: CPcompatibility
  * Plugin URI: https://software.gieffeedizioni.it
  * Description: Tweaks for working with CP: wpcli compatibility, plugin checks.
- * Version: 1.1.2
+ * Version: 1.1.3
+ * Requires PHP: 5.6
+ * Requires CP: 1.0
  * License: GPL2
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Author: Gieffe edizioni srl
