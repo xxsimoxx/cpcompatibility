@@ -131,7 +131,7 @@ class CPC_List_Table extends \WP_List_Table {
 		$data = [];
 		foreach ($list as $plugin) {
 			$data[] = [
-				'compatible' => (preg_match('/^5/', $plugin->requires) === 1) ? 'not' : 'is',
+				'compatible' => (version_compare($plugin->requires, '5', '<')) ? 'is' : 'not',
 				'name'       => $plugin->name,
 				'version'    => $plugin->version,
 				'link'       => $plugin->homepage,
